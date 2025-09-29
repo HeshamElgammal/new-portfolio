@@ -34,7 +34,7 @@ const Experience = () => {
       title: 'Waseet.net – Classifieds Platform',
       company: 'Waseet',
       position: 'Frontend Developer',
-      duration: '2023 - Present',
+      duration: '2025 - Present',
       type: 'Full-time',
       description:
         "Helped build and maintain Waseet.net's mobile and web platforms. Focused on UI component development, API integration, and performance tuning. Worked closely with backend and design teams to align features with user needs.",
@@ -53,8 +53,8 @@ const Experience = () => {
       title: 'Digital Car – Saudi Arabia',
       company: 'Digital Car',
       position: 'Mobile Developer',
-      duration: '2022 - 2023',
-      type: 'Full-time',
+      duration: '2023 - Present',
+      type: 'Part-time',
       description:
         'Developed a car-selling application to transform the Saudi automotive market by prioritizing transparency and user trust. Built using React Native, the app includes features for browsing car listings, scheduling test drives, and secure payment processing.',
       image: 'https://dcar-prod.s3.amazonaws.com/imgUploads/1736261555964.webp',
@@ -72,7 +72,7 @@ const Experience = () => {
       title: 'DrugGo - Mobile Pharmacy App',
       company: 'Freelance',
       position: 'Mobile Developer',
-      duration: '2022',
+      duration: '2023 - Present',
       type: 'Freelance',
       description:
         'Developed a mobile application for online pharmacy services, allowing users to browse medications, upload prescriptions, and place orders with ease. Integrated location services for nearby pharmacy suggestions, secure order tracking, and in-app notifications.',
@@ -112,7 +112,7 @@ const Experience = () => {
       title: 'Al-Haram Al-Makki - Educational Platform',
       company: 'Misraj Technology',
       position: 'Mobile Developer',
-      duration: '2021 - 2022',
+      duration: '2025',
       type: 'Freelance',
       description:
         'Developed a mobile application for an educational platform offering courses and group interactions for reciters and students. Built using React Native, implemented the courses flow and main pages, and led a redesign of multiple UI components.',
