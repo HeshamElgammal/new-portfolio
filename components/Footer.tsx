@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Heart, Linkedin, Mail } from 'lucide-react'
+import { Github, Linkedin, Mail } from 'lucide-react'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -125,14 +125,6 @@ const Footer = () => {
             <p className="mb-4 md:mb-0 text-gray-400 text-sm">
               © {currentYear} Hesham Elgammal. All rights reserved.
             </p>
-
-            <motion.p
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center text-gray-400 text-sm"
-            >
-              Made with <Heart className="mx-1 text-red-500" size={16} /> using
-              Next.js
-            </motion.p>
           </div>
         </motion.div>
       </div>

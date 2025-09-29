@@ -53,20 +53,34 @@ const Contact = () => {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 2000))
+    try {
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
 
-    // Reset form
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-    })
-    setIsSubmitting(false)
-
-    // Show success message (you can implement a toast notification here)
-    alert('Message sent successfully!')
+      if (response.ok) {
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          subject: '',
+          message: '',
+        })
+        alert('Message sent successfully! I\'ll get back to you soon.')
+      } else {
+        const errorData = await response.json()
+        alert(`Error: ${errorData.error || 'Failed to send message'}`)
+      }
+    } catch (error) {
+      console.error('Error sending message:', error)
+      alert('Error sending message. Please try again later.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const contactInfo = [
@@ -192,112 +206,67 @@ const Contact = () => {
               </div>
             </motion.div>
 
-            {/* Contact Form */}
+            {/* Let's Work Together Section */}
             <motion.div variants={itemVariants}>
-              <div className="bg-gray-50 dark:bg-dark-800 p-8 rounded-2xl">
-                <h3 className="mb-6 font-bold text-gray-900 dark:text-white text-2xl">
-                  Send a Message
+              <div className="bg-gradient-to-br from-primary-50 dark:from-primary-900/20 to-primary-100 dark:to-primary-800/20 p-8 border border-primary-200 dark:border-primary-700 rounded-2xl">
+                <h3 className="mb-4 font-bold text-gray-900 dark:text-white text-2xl">
+                  Let's Work Together
                 </h3>
+                <p className="mb-6 text-gray-600 dark:text-gray-400 leading-relaxed">
+                  Ready to bring your ideas to life? I'm available for freelance projects, 
+                  full-time opportunities, and exciting collaborations. Let's discuss how 
+                  we can work together to create something amazing.
+                </p>
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="gap-6 grid md:grid-cols-2">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm"
-                      >
-                        Name
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                        className="bg-white dark:bg-dark-700 px-4 py-3 border border-gray-300 dark:border-dark-600 focus:border-transparent rounded-lg focus:ring-2 focus:ring-primary-500 w-full text-gray-900 dark:text-white transition-all duration-200"
-                        placeholder="Your name"
-                      />
-                    </div>
-
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm"
-                      >
-                        Email
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleInputChange}
-                        required
-                        className="bg-white dark:bg-dark-700 px-4 py-3 border border-gray-300 dark:border-dark-600 focus:border-transparent rounded-lg focus:ring-2 focus:ring-primary-500 w-full text-gray-900 dark:text-white transition-all duration-200"
-                        placeholder="your.email@example.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="subject"
-                      className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm"
-                    >
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleInputChange}
-                      required
-                      className="bg-white dark:bg-dark-700 px-4 py-3 border border-gray-300 dark:border-dark-600 focus:border-transparent rounded-lg focus:ring-2 focus:ring-primary-500 w-full text-gray-900 dark:text-white transition-all duration-200"
-                      placeholder="What's this about?"
-                    />
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm"
-                    >
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleInputChange}
-                      required
-                      rows={6}
-                      className="bg-white dark:bg-dark-700 px-4 py-3 border border-gray-300 dark:border-dark-600 focus:border-transparent rounded-lg focus:ring-2 focus:ring-primary-500 w-full text-gray-900 dark:text-white transition-all duration-200 resize-none"
-                      placeholder="Tell me about your project or just say hello!"
-                    />
-                  </div>
-
-                  <motion.button
-                    type="submit"
-                    disabled={isSubmitting}
+                {/* Quick Actions */}
+                <div className="space-y-4">
+                  <motion.a
+                    href="mailto:heshamelgammal404@gmail.com"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="flex justify-center items-center bg-primary-600 hover:bg-primary-700 disabled:bg-primary-400 px-6 py-3 rounded-lg w-full font-semibold text-white transition-colors duration-200"
+                    className="flex justify-center items-center bg-primary-600 hover:bg-primary-700 px-6 py-3 rounded-lg font-semibold text-white transition-colors duration-200"
                   >
-                    {isSubmitting ? (
-                      <div className="flex items-center">
-                        <div className="mr-2 border-white border-b-2 rounded-full w-5 h-5 animate-spin"></div>
-                        Sending...
-                      </div>
-                    ) : (
-                      <div className="flex items-center">
-                        <Send className="mr-2" size={20} />
-                        Send Message
-                      </div>
-                    )}
-                  </motion.button>
-                </form>
+                    <Mail className="mr-2" size={20} />
+                    Send Email
+                  </motion.a>
+
+                  <motion.a
+                    href="https://linkedin.com/in/hesham-elgammal-3b47a0383"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex justify-center items-center bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg font-semibold text-white transition-colors duration-200"
+                  >
+                    <Linkedin className="mr-2" size={20} />
+                    Connect on LinkedIn
+                  </motion.a>
+
+                  <motion.a
+                    href="https://github.com/HeshamElgammal/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="flex justify-center items-center bg-gray-800 hover:bg-gray-900 px-6 py-3 rounded-lg font-semibold text-white transition-colors duration-200"
+                  >
+                    <Github className="mr-2" size={20} />
+                    View My Code
+                  </motion.a>
+                </div>
+
+                {/* Availability Status */}
+                <div className="bg-green-50 dark:bg-green-900/20 mt-6 p-4 border border-green-200 dark:border-green-700 rounded-lg">
+                  <div className="flex items-center">
+                    <div className="bg-green-500 mr-3 rounded-full w-3 h-3 animate-pulse"></div>
+                    <span className="font-medium text-green-700 dark:text-green-400">
+                      Available for new projects
+                    </span>
+                  </div>
+                  <p className="mt-1 text-green-600 dark:text-green-500 text-sm">
+                    Typically respond within 24 hours
+                  </p>
+                </div>
               </div>
             </motion.div>
           </div>

@@ -43,7 +43,7 @@ const Skills = () => {
     {
       title: 'Web Development',
       skills: [
-        { name: 'Next.js', level: 90, color: 'bg-gray-800' },
+        { name: 'Next.js', level: 90, color: 'bg-yellow-600' },
         { name: 'React', level: 95, color: 'bg-blue-600' },
         { name: 'TypeScript', level: 88, color: 'bg-blue-500' },
         { name: 'Tailwind CSS', level: 90, color: 'bg-cyan-500' },
@@ -55,7 +55,7 @@ const Skills = () => {
       title: 'Backend & Database',
       skills: [
         { name: 'Node.js', level: 85, color: 'bg-green-600' },
-        { name: 'Express.js', level: 88, color: 'bg-gray-600' },
+        { name: 'Express.js', level: 88, color: 'bg-red-600' },
         { name: 'PostgreSQL', level: 82, color: 'bg-blue-700' },
         { name: 'MongoDB', level: 78, color: 'bg-green-500' },
         { name: 'Python', level: 80, color: 'bg-yellow-600' },
@@ -67,9 +67,7 @@ const Skills = () => {
       skills: [
         { name: 'Git', level: 92, color: 'bg-orange-600' },
         { name: 'VS Code', level: 95, color: 'bg-blue-600' },
-        { name: 'Docker', level: 75, color: 'bg-blue-500' },
         { name: 'AWS', level: 70, color: 'bg-orange-400' },
-        { name: 'Linux', level: 80, color: 'bg-yellow-700' },
         { name: 'Testing', level: 85, color: 'bg-green-500' },
       ],
     },
@@ -97,7 +95,7 @@ const Skills = () => {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={inView ? 'visible' : 'hidden'}
           className="mx-auto max-w-6xl"
         >
           {/* Section Header */}
@@ -106,7 +104,8 @@ const Skills = () => {
               Skills & <span className="gradient-text">Technologies</span>
             </h2>
             <p className="mx-auto max-w-3xl text-gray-600 dark:text-gray-400 text-xl">
-              Here are the technologies and tools I work with to bring ideas to life.
+              Here are the technologies and tools I work with to bring ideas to
+              life.
             </p>
           </motion.div>
 
@@ -140,7 +139,7 @@ const Skills = () => {
                 <h3 className="mb-8 font-bold text-gray-900 dark:text-white text-2xl text-center">
                   {category.title}
                 </h3>
-                
+
                 <div className="gap-6 grid md:grid-cols-2">
                   {category.skills.map((skill, skillIndex) => (
                     <motion.div
@@ -156,16 +155,18 @@ const Skills = () => {
                           {skill.level}%
                         </span>
                       </div>
-                      
+
                       <div className="bg-gray-200 dark:bg-dark-600 rounded-full w-full h-3">
                         <motion.div
                           className={`h-3 rounded-full ${skill.color}`}
                           initial={{ width: 0 }}
-                          animate={inView ? { width: `${skill.level}%` } : { width: 0 }}
+                          animate={
+                            inView ? { width: `${skill.level}%` } : { width: 0 }
+                          }
                           transition={{
                             duration: 1.5,
                             delay: categoryIndex * 0.2 + skillIndex * 0.1,
-                            ease: "easeOut"
+                            ease: 'easeOut',
                           }}
                         />
                       </div>
@@ -177,18 +178,15 @@ const Skills = () => {
           </div>
 
           {/* Additional Info */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-16 text-center"
-          >
+          <motion.div variants={itemVariants} className="mt-16 text-center">
             <div className="bg-gradient-to-r from-primary-500 to-primary-600 p-8 rounded-2xl text-white">
               <h3 className="mb-4 font-bold text-2xl">
                 Always Learning & Growing
               </h3>
               <p className="opacity-90 mx-auto max-w-2xl text-lg">
-                I'm passionate about staying up-to-date with the latest technologies and 
-                continuously improving my skills. Currently exploring AI/ML, Web3, and 
-                advanced cloud architectures.
+                I'm passionate about staying up-to-date with the latest
+                technologies and continuously improving my skills. Currently
+                exploring AI/ML, Web3, and advanced cloud architectures.
               </p>
             </div>
           </motion.div>

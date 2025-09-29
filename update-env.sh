@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo "🔧 Gmail App Password Setup Helper"
+echo "=================================="
+echo ""
+echo "Current .env.local content:"
+cat .env.local
+echo ""
+echo ""
+echo "To fix the email issue, you need to:"
+echo "1. Go to: https://myaccount.google.com/apppasswords"
+echo "2. Generate an App Password for 'Mail'"
+echo "3. Copy the 16-character password"
+echo "4. Run this command with your App Password:"
+echo ""
+echo "   echo 'EMAIL_PASS=your-16-character-app-password' > temp_pass.txt"
+echo "   sed 's/EMAIL_PASS=.*/EMAIL_PASS=your-16-character-app-password/' .env.local > temp_env.txt"
+echo "   mv temp_env.txt .env.local"
+echo "   rm temp_pass.txt"
+echo ""
+echo "5. Test with: node test-email.js"
+echo ""
+echo "⚠️  IMPORTANT: Use the App Password, NOT your regular Gmail password!"
