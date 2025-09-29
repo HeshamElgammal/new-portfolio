@@ -233,16 +233,6 @@ const Experience = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                     <div className="top-4 right-4 absolute flex space-x-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      {/* <motion.a
-                        href={project.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                        className="bg-white/20 hover:bg-white/30 backdrop-blur-sm p-2 rounded-full text-white transition-colors duration-200"
-                      >
-                        <Github size={20} />
-                      </motion.a> */}
                       <motion.a
                         href={experience.live}
                         target="_blank"
