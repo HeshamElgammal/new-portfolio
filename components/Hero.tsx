@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ChevronDown, Github, Linkedin, Mail, Download } from 'lucide-react'
+import { ChevronDown, Download, Github, Linkedin, Mail } from 'lucide-react'
 
 const Hero = () => {
   const scrollToNext = () => {
@@ -31,14 +31,23 @@ const Hero = () => {
   }
 
   return (
-    <section id="home" className="relative flex justify-center items-center min-h-screen overflow-hidden">
+    <section
+      id="home"
+      className="relative flex justify-center items-center min-h-screen overflow-hidden"
+    >
       {/* Background Elements */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary-50 dark:from-dark-900 via-white dark:via-dark-800 to-primary-100 dark:to-dark-900"></div>
-      
+
       {/* Floating Elements */}
       <div className="top-20 left-10 float-animation absolute bg-primary-200 dark:bg-primary-800 opacity-20 rounded-full w-20 h-20"></div>
-      <div className="top-40 right-20 float-animation absolute bg-primary-300 dark:bg-primary-700 opacity-30 rounded-full w-16 h-16" style={{ animationDelay: '1s' }}></div>
-      <div className="bottom-40 left-20 float-animation absolute bg-primary-400 dark:bg-primary-600 opacity-25 rounded-full w-12 h-12" style={{ animationDelay: '2s' }}></div>
+      <div
+        className="top-40 right-20 float-animation absolute bg-primary-300 dark:bg-primary-700 opacity-30 rounded-full w-16 h-16"
+        style={{ animationDelay: '1s' }}
+      ></div>
+      <div
+        className="bottom-40 left-20 float-animation absolute bg-primary-400 dark:bg-primary-600 opacity-25 rounded-full w-12 h-12"
+        style={{ animationDelay: '2s' }}
+      ></div>
 
       <div className="z-10 relative mx-auto px-4 sm:px-6 lg:px-8 container">
         <motion.div
@@ -67,7 +76,7 @@ const Hero = () => {
             variants={itemVariants}
             className="mb-8 font-semibold text-gray-700 dark:text-gray-300 text-2xl sm:text-3xl lg:text-4xl"
           >
-            Full Stack Developer
+            Front-end Developer
           </motion.h2>
 
           {/* Description */}
@@ -75,8 +84,9 @@ const Hero = () => {
             variants={itemVariants}
             className="mx-auto mb-12 max-w-2xl text-gray-600 dark:text-gray-400 text-lg sm:text-xl leading-relaxed"
           >
-            I create amazing digital experiences through clean code and robust development. 
-            Passionate about building scalable applications and efficient software solutions.
+            I create amazing digital experiences through clean code and robust
+            development. Passionate about building scalable applications and
+            efficient software solutions.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -92,7 +102,7 @@ const Hero = () => {
             >
               View My Work
             </motion.button>
-            
+
             <motion.a
               href="/Hesham-Elgammal-CV.pdf"
               target="_blank"
@@ -121,7 +131,7 @@ const Hero = () => {
             >
               <Github size={24} />
             </motion.a>
-            
+
             <motion.a
               href="https://linkedin.com/in/hesham-elgammal-3b47a0383"
               target="_blank"
@@ -132,7 +142,7 @@ const Hero = () => {
             >
               <Linkedin size={24} />
             </motion.a>
-            
+
             <motion.a
               href="mailto:heshamelgammal404@gmail.com"
               whileHover={{ scale: 1.1, y: -2 }}

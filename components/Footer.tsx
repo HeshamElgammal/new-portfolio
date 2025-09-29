@@ -54,7 +54,7 @@ const Footer = () => {
               Hesham Elgammal
             </h3>
             <p className="mb-6 max-w-md text-gray-400 leading-relaxed">
-              Full Stack Developer specializing in mobile and web applications.
+              Front-end Developer specializing in mobile and web applications.
               Creating robust software solutions that make a difference. Let's
               build something incredible together!
             </p>

@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { Code, Users, Zap } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
-import { Code, Palette, Zap, Users } from 'lucide-react'
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -63,7 +63,7 @@ const About = () => {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={inView ? 'visible' : 'hidden'}
           className="mx-auto max-w-6xl"
         >
           {/* Section Header */}
@@ -72,8 +72,8 @@ const About = () => {
               About <span className="gradient-text">Me</span>
             </h2>
             <p className="mx-auto max-w-3xl text-gray-600 dark:text-gray-400 text-xl">
-              I'm a passionate developer with a love for creating 
-              exceptional digital experiences and robust software solutions.
+              I'm a passionate developer with a love for creating exceptional
+              digital experiences and robust software solutions.
             </p>
           </motion.div>
 
@@ -95,15 +95,17 @@ const About = () => {
                   Hi, I'm Hesham Elgammal
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  I'm a passionate full-stack developer specializing in React Native mobile applications 
-                  and Next.js web development. With experience in building comprehensive platforms like 
-                  Digital Car and Waseet, I focus on creating scalable, user-friendly solutions that 
-                  make a real impact.
+                  I'm a passionate full-stack developer specializing in React
+                  Native mobile applications and Next.js web development. With
+                  experience in building comprehensive platforms like Digital
+                  Car and Waseet, I focus on creating scalable, user-friendly
+                  solutions that make a real impact.
                 </p>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  My expertise spans mobile app development with React Native, modern web development 
-                  with Next.js and TypeScript, and backend technologies. I'm passionate about creating 
-                  seamless user experiences across all platforms.
+                  My expertise spans mobile app development with React Native,
+                  modern web development with Next.js and TypeScript, and
+                  backend technologies. I'm passionate about creating seamless
+                  user experiences across all platforms.
                 </p>
               </div>
             </motion.div>
@@ -113,7 +115,7 @@ const About = () => {
               <h3 className="mb-8 font-bold text-gray-900 dark:text-white text-2xl">
                 What I Do
               </h3>
-              
+
               <div className="gap-6 grid">
                 {skills.map((skill, index) => (
                   <motion.div
@@ -123,7 +125,9 @@ const About = () => {
                     className="bg-white dark:bg-dark-700 shadow-lg hover:shadow-xl p-6 rounded-xl transition-all duration-300"
                   >
                     <div className="flex items-start space-x-4">
-                      <div className={`p-3 rounded-lg bg-gray-100 dark:bg-dark-600 ${skill.color}`}>
+                      <div
+                        className={`p-3 rounded-lg bg-gray-100 dark:bg-dark-600 ${skill.color}`}
+                      >
                         <skill.icon size={24} />
                       </div>
                       <div className="flex-1">
@@ -147,10 +151,10 @@ const About = () => {
             className="gap-8 grid grid-cols-2 md:grid-cols-4 mt-20"
           >
             {[
-              { number: '50+', label: 'Projects Completed' },
+              { number: '10+', label: 'Projects Completed' },
               { number: '3+', label: 'Years Experience' },
               { number: '100%', label: 'Client Satisfaction' },
-              { number: '24/7', label: 'Available Support' },
+              // { number: '24/7', label: 'Available Support' },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
