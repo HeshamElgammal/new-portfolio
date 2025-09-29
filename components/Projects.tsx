@@ -35,6 +35,7 @@ const Experience = () => {
       company: 'Waseet',
       position: 'Frontend Developer',
       duration: '2023 - Present',
+      type: 'Full-time',
       description:
         "Helped build and maintain Waseet.net's mobile and web platforms. Focused on UI component development, API integration, and performance tuning. Worked closely with backend and design teams to align features with user needs.",
       image: 'https://waseet.net/assets/logo-ar.svg',
@@ -53,6 +54,7 @@ const Experience = () => {
       company: 'Digital Car',
       position: 'Mobile Developer',
       duration: '2022 - 2023',
+      type: 'Full-time',
       description:
         'Developed a car-selling application to transform the Saudi automotive market by prioritizing transparency and user trust. Built using React Native, the app includes features for browsing car listings, scheduling test drives, and secure payment processing.',
       image: 'https://dcar-prod.s3.amazonaws.com/imgUploads/1736261555964.webp',
@@ -71,6 +73,7 @@ const Experience = () => {
       company: 'Freelance',
       position: 'Mobile Developer',
       duration: '2022',
+      type: 'Freelance',
       description:
         'Developed a mobile application for online pharmacy services, allowing users to browse medications, upload prescriptions, and place orders with ease. Integrated location services for nearby pharmacy suggestions, secure order tracking, and in-app notifications.',
       image:
@@ -89,7 +92,8 @@ const Experience = () => {
       title: 'Hike-Time - Outdoor Activity App',
       company: 'Freelance',
       position: 'Mobile Developer',
-      duration: '2022',
+      duration: '2023',
+      type: 'Freelance',
       description:
         'Developed a cross-platform mobile app for hiking enthusiasts to discover and share trails, trips, and outdoor experiences. Features include trail discovery, user reviews, photo sharing, and location-based recommendations.',
       image:
@@ -109,6 +113,7 @@ const Experience = () => {
       company: 'Misraj Technology',
       position: 'Mobile Developer',
       duration: '2021 - 2022',
+      type: 'Freelance',
       description:
         'Developed a mobile application for an educational platform offering courses and group interactions for reciters and students. Built using React Native, implemented the courses flow and main pages, and led a redesign of multiple UI components.',
       image:
@@ -127,7 +132,8 @@ const Experience = () => {
       title: 'Macqueen – Travel Services App',
       company: 'Zeidex',
       position: 'Mobile Developer',
-      duration: '2021',
+      duration: '2023',
+      type: 'Part-time',
       description:
         'Contributed to a travel platform offering flight booking, hotel accommodation, and chauffeur services. Worked closely with UX designers to translate wireframes into interactive components. Modularized codebase and implemented efficient state management.',
       image:
@@ -145,7 +151,8 @@ const Experience = () => {
       title: 'Oproject Web & Mobile Apps',
       company: 'Oproject',
       position: 'Frontend Developer',
-      duration: '2020 - 2021',
+      duration: '2022 - 2023',
+      type: 'Full-time',
       description:
         'Built front-end features for multiple projects including Affiliate, Lokle, Glia, and Edactik. Designed user-friendly UIs, integrated third-party APIs, and maintained code quality through peer reviews. Worked on both web and mobile platforms.',
       image:
@@ -159,7 +166,8 @@ const Experience = () => {
       title: 'E-Commerce Apps – Turkish Stores & Petal Egypt',
       company: 'Blue Brain',
       position: 'Mobile Developer',
-      duration: '2020',
+      duration: '2021 - 2022',
+      type: 'Full-time',
       description:
         'Developed e-commerce applications targeting different markets. Integrated secure payment gateways, user authentication, and responsive product listings. Improved performance using Redux and followed Agile practices for rapid feature delivery.',
       image:
@@ -256,9 +264,16 @@ const Experience = () => {
                       <p className="font-medium text-primary-600 dark:text-primary-400">
                         {experience.position} at {experience.company}
                       </p>
-                      <p className="text-gray-500 dark:text-gray-500 text-sm">
-                        {experience.duration}
-                      </p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <p className="text-gray-500 dark:text-gray-500 text-sm">
+                          {experience.duration}
+                        </p>
+                        {experience.type && (
+                          <span className="bg-blue-100 dark:bg-blue-900/30 px-2 py-1 rounded-full font-medium text-blue-800 dark:text-blue-300 text-xs">
+                            {experience.type}
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <p className="mb-4 text-gray-600 dark:text-gray-400 leading-relaxed">
                       {experience.description}
@@ -336,9 +351,16 @@ const Experience = () => {
                       <p className="font-medium text-primary-600 dark:text-primary-400 text-sm">
                         {experience.position} at {experience.company}
                       </p>
-                      <p className="text-gray-500 dark:text-gray-500 text-xs">
-                        {experience.duration}
-                      </p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <p className="text-gray-500 dark:text-gray-500 text-xs">
+                          {experience.duration}
+                        </p>
+                        {experience.type && (
+                          <span className="bg-blue-100 dark:bg-blue-900/30 px-1.5 py-0.5 rounded-full font-medium text-blue-800 dark:text-blue-300 text-xs">
+                            {experience.type}
+                          </span>
+                        )}
+                      </div>
                     </div>
                     <p className="mb-3 text-gray-600 dark:text-gray-400 text-sm leading-relaxed">
                       {experience.description}
