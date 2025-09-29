@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Heart, Github, Linkedin, Twitter, Mail } from 'lucide-react'
+import { Github, Heart, Linkedin, Mail } from 'lucide-react'
 
 const Footer = () => {
   const currentYear = new Date().getFullYear()
@@ -16,11 +16,6 @@ const Footer = () => {
       icon: Linkedin,
       name: 'LinkedIn',
       url: 'https://linkedin.com/in/hesham-elgammal-3b47a0383',
-    },
-    {
-      icon: Twitter,
-      name: 'Twitter',
-      url: 'https://twitter.com/heshamelgammal',
     },
     {
       icon: Mail,
@@ -59,10 +54,11 @@ const Footer = () => {
               Hesham Elgammal
             </h3>
             <p className="mb-6 max-w-md text-gray-400 leading-relaxed">
-              Full Stack Developer specializing in mobile and web applications. 
-              Creating robust software solutions that make a difference. Let's build something incredible together!
+              Full Stack Developer specializing in mobile and web applications.
+              Creating robust software solutions that make a difference. Let's
+              build something incredible together!
             </p>
-            
+
             {/* Social Links */}
             <div className="flex space-x-4">
               {socialLinks.map((social, index) => (
@@ -129,12 +125,13 @@ const Footer = () => {
             <p className="mb-4 md:mb-0 text-gray-400 text-sm">
               © {currentYear} Hesham Elgammal. All rights reserved.
             </p>
-            
+
             <motion.p
               whileHover={{ scale: 1.05 }}
               className="flex items-center text-gray-400 text-sm"
             >
-              Made with <Heart className="mx-1 text-red-500" size={16} /> using Next.js
+              Made with <Heart className="mx-1 text-red-500" size={16} /> using
+              Next.js
             </motion.p>
           </div>
         </motion.div>

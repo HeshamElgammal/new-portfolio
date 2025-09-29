@@ -1,9 +1,9 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { Mail, Phone, MapPin, Github, Linkedin, Twitter, Send } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react'
 import { useState } from 'react'
+import { useInView } from 'react-intersection-observer'
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -39,21 +39,23 @@ const Contact = () => {
     },
   }
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value,
     }))
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
+
     // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
+    await new Promise((resolve) => setTimeout(resolve, 2000))
+
     // Reset form
     setFormData({
       name: '',
@@ -62,7 +64,7 @@ const Contact = () => {
       message: '',
     })
     setIsSubmitting(false)
-    
+
     // Show success message (you can implement a toast notification here)
     alert('Message sent successfully!')
   }
@@ -101,12 +103,6 @@ const Contact = () => {
       url: 'https://linkedin.com/in/hesham-elgammal-3b47a0383',
       color: 'hover:text-blue-600',
     },
-    {
-      icon: Twitter,
-      name: 'Twitter',
-      url: 'https://twitter.com/heshamelgammal',
-      color: 'hover:text-blue-400',
-    },
   ]
 
   return (
@@ -116,7 +112,7 @@ const Contact = () => {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
+          animate={inView ? 'visible' : 'hidden'}
           className="mx-auto max-w-6xl"
         >
           {/* Section Header */}
@@ -125,8 +121,8 @@ const Contact = () => {
               Get In <span className="gradient-text">Touch</span>
             </h2>
             <p className="mx-auto max-w-3xl text-gray-600 dark:text-gray-400 text-xl">
-              Have a project in mind or just want to chat? I'd love to hear from you. 
-              Let's create something amazing together!
+              Have a project in mind or just want to chat? I'd love to hear from
+              you. Let's create something amazing together!
             </p>
           </motion.div>
 
@@ -138,8 +134,9 @@ const Contact = () => {
                   Let's Connect
                 </h3>
                 <p className="mb-8 text-gray-600 dark:text-gray-400 leading-relaxed">
-                  I'm always interested in new opportunities and exciting projects. 
-                  Whether you have a question or just want to say hi, feel free to reach out!
+                  I'm always interested in new opportunities and exciting
+                  projects. Whether you have a question or just want to say hi,
+                  feel free to reach out!
                 </p>
               </div>
 
@@ -154,7 +151,10 @@ const Contact = () => {
                     className="flex items-center space-x-4 bg-gray-50 hover:bg-gray-100 dark:hover:bg-dark-700 dark:bg-dark-800 p-4 rounded-xl transition-all duration-200"
                   >
                     <div className="bg-primary-100 dark:bg-primary-900 p-3 rounded-lg">
-                      <info.icon className="text-primary-600 dark:text-primary-400" size={24} />
+                      <info.icon
+                        className="text-primary-600 dark:text-primary-400"
+                        size={24}
+                      />
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900 dark:text-white">
@@ -198,11 +198,14 @@ const Contact = () => {
                 <h3 className="mb-6 font-bold text-gray-900 dark:text-white text-2xl">
                   Send a Message
                 </h3>
-                
+
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="gap-6 grid md:grid-cols-2">
                     <div>
-                      <label htmlFor="name" className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm">
+                      <label
+                        htmlFor="name"
+                        className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm"
+                      >
                         Name
                       </label>
                       <input
@@ -216,9 +219,12 @@ const Contact = () => {
                         placeholder="Your name"
                       />
                     </div>
-                    
+
                     <div>
-                      <label htmlFor="email" className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm">
+                      <label
+                        htmlFor="email"
+                        className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm"
+                      >
                         Email
                       </label>
                       <input
@@ -233,9 +239,12 @@ const Contact = () => {
                       />
                     </div>
                   </div>
-                  
+
                   <div>
-                    <label htmlFor="subject" className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm">
+                    <label
+                      htmlFor="subject"
+                      className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm"
+                    >
                       Subject
                     </label>
                     <input
@@ -249,9 +258,12 @@ const Contact = () => {
                       placeholder="What's this about?"
                     />
                   </div>
-                  
+
                   <div>
-                    <label htmlFor="message" className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm">
+                    <label
+                      htmlFor="message"
+                      className="block mb-2 font-medium text-gray-700 dark:text-gray-300 text-sm"
+                    >
                       Message
                     </label>
                     <textarea
@@ -265,7 +277,7 @@ const Contact = () => {
                       placeholder="Tell me about your project or just say hello!"
                     />
                   </div>
-                  
+
                   <motion.button
                     type="submit"
                     disabled={isSubmitting}
