@@ -8,7 +8,8 @@ cat .env.local
 echo ""
 echo ""
 echo "To fix the email issue, you need to:"
-echo "1. Go to: https://myaccount.google.com/apppasswords"
+echo "1. Go to: https://myaccount.google.com/apppasswords ::biot imvt lbwd vknb :: google password
+"
 echo "2. Generate an App Password for 'Mail'"
 echo "3. Copy the 16-character password"
 echo "4. Run this command with your App Password:"

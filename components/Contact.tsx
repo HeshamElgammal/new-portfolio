@@ -1,9 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react'
+import { Github, Linkedin, Mail, MapPin, Phone } from 'lucide-react'
 import { useState } from 'react'
 import { useInView } from 'react-intersection-observer'
+import SectionHeader from '@/components/ui/SectionHeader'
+import { containerVariants, itemVariants } from '@/lib/animations'
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -19,25 +21,6 @@ const Contact = () => {
   })
 
   const [isSubmitting, setIsSubmitting] = useState(false)
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.2,
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  }
 
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -120,8 +103,8 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="bg-white dark:bg-dark-900 py-20">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 container">
+    <section id="contact" className="section-shell bg-white dark:bg-dark-900">
+      <div className="section-container">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -129,16 +112,12 @@ const Contact = () => {
           animate={inView ? 'visible' : 'hidden'}
           className="mx-auto max-w-6xl"
         >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="mb-16 text-center">
-            <h2 className="mb-6 font-bold text-gray-900 dark:text-white text-4xl sm:text-5xl">
-              Get In <span className="gradient-text">Touch</span>
-            </h2>
-            <p className="mx-auto max-w-3xl text-gray-600 dark:text-gray-400 text-xl">
-              Have a project in mind or just want to chat? I'd love to hear from
-              you. Let's create something amazing together!
-            </p>
-          </motion.div>
+          <SectionHeader
+            eyebrow="Contact"
+            beforeHighlight="Get In "
+            highlight="Touch"
+            subtitle="Have a project in mind or just want to chat? I'd love to hear from you. Let's create something amazing together!"
+          />
 
           <div className="gap-12 grid lg:grid-cols-2">
             {/* Contact Information */}
@@ -162,7 +141,7 @@ const Contact = () => {
                     href={info.link}
                     variants={itemVariants}
                     whileHover={{ scale: 1.02, x: 5 }}
-                    className="flex items-center space-x-4 bg-gray-50 hover:bg-gray-100 dark:hover:bg-dark-700 dark:bg-dark-800 p-4 rounded-xl transition-all duration-200"
+                    className="flex items-center space-x-4 modern-card-muted p-4"
                   >
                     <div className="bg-primary-100 dark:bg-primary-900 p-3 rounded-lg">
                       <info.icon
@@ -197,7 +176,7 @@ const Contact = () => {
                       variants={itemVariants}
                       whileHover={{ scale: 1.1, y: -2 }}
                       whileTap={{ scale: 0.9 }}
-                      className={`p-3 bg-gray-100 dark:bg-dark-800 rounded-lg text-gray-600 dark:text-gray-400 ${social.color} transition-all duration-200`}
+                      className={`p-3 modern-card-muted rounded-lg text-gray-600 dark:text-gray-400 ${social.color} transition-all duration-200`}
                     >
                       <social.icon size={24} />
                     </motion.a>
@@ -208,7 +187,7 @@ const Contact = () => {
 
             {/* Let's Work Together Section */}
             <motion.div variants={itemVariants}>
-              <div className="bg-gradient-to-br from-primary-50 dark:from-primary-900/20 to-primary-100 dark:to-primary-800/20 p-8 border border-primary-200 dark:border-primary-700 rounded-2xl">
+              <div className="modern-card-soft bg-gradient-to-br from-primary-50 dark:from-primary-900/20 to-primary-100 dark:to-primary-800/20 p-8 border-primary-200 dark:border-primary-700">
                 <h3 className="mb-4 font-bold text-gray-900 dark:text-white text-2xl">
                   Let's Work Together
                 </h3>

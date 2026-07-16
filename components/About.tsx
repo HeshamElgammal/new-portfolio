@@ -3,32 +3,10 @@
 import { motion } from 'framer-motion'
 import { Code, Users, Zap } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
+import SectionHeader from '@/components/ui/SectionHeader'
+import { containerVariants, itemVariants } from '@/lib/animations'
 
 const About = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        delayChildren: 0.2,
-        staggerChildren: 0.1,
-      },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { y: 30, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-    },
-  }
-
   const skills = [
     {
       icon: Code,
@@ -51,14 +29,19 @@ const About = () => {
     {
       icon: Code,
       title: 'Development Tools',
-      description: 'Git, VS Code, Docker, API Development',
+      description: 'Git, VS Code, Hostinger VPS, API Development',
       color: 'text-orange-500',
     },
   ]
 
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.1,
+  })
+
   return (
-    <section id="about" className="bg-gray-50 dark:bg-dark-800 py-20">
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 container">
+    <section id="about" className="section-shell bg-gray-50 dark:bg-dark-800">
+      <div className="section-container">
         <motion.div
           ref={ref}
           variants={containerVariants}
@@ -66,25 +49,23 @@ const About = () => {
           animate={inView ? 'visible' : 'hidden'}
           className="mx-auto max-w-6xl"
         >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="mb-16 text-center">
-            <h2 className="mb-6 font-bold text-gray-900 dark:text-white text-4xl sm:text-5xl">
-              About <span className="gradient-text">Me</span>
-            </h2>
-            <p className="mx-auto max-w-3xl text-gray-600 dark:text-gray-400 text-xl">
-              I'm a passionate developer with a love for creating exceptional
-              digital experiences and robust software solutions.
-            </p>
-          </motion.div>
+          <SectionHeader
+            eyebrow="Introduction"
+            beforeHighlight="About "
+            highlight="Me"
+            subtitle="I'm a passionate developer with a love for creating exceptional digital experiences and robust software solutions."
+          />
 
           <div className="items-center gap-12 grid lg:grid-cols-2">
             {/* Left Column - Image and Description */}
             <motion.div variants={itemVariants} className="space-y-8">
               <div className="relative">
-                <div className="bg-gradient-to-br from-primary-400 to-primary-600 shadow-2xl mx-auto rounded-2xl w-80 h-80 overflow-hidden">
-                  <div className="flex justify-center items-center bg-gray-200 dark:bg-gray-700 w-full h-full">
-                    <span className="text-6xl">👨‍💻</span>
-                  </div>
+                <div className="bg-gradient-to-br from-primary-400 to-primary-600 shadow-2xl mx-auto border-4 border-white dark:border-dark-700 rounded-2xl w-80 h-80 overflow-hidden">
+                  <img
+                    src="/hesham-profile.jpg"
+                    alt="Hesham Elgammal - Frontend Developer"
+                    className="w-full h-full object-cover object-top"
+                  />
                 </div>
                 <div className="-top-4 -right-4 absolute bg-primary-200 dark:bg-primary-800 opacity-50 rounded-full w-24 h-24"></div>
                 <div className="-bottom-4 -left-4 absolute bg-primary-300 dark:bg-primary-700 opacity-50 rounded-full w-16 h-16"></div>
@@ -95,10 +76,12 @@ const About = () => {
                   Hi, I'm Hesham Elgammal
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  I'm a passionate full-stack developer specializing in React
-                  Native mobile applications and Next.js web development. With
-                  experience in building comprehensive platforms like Digital
-                  Car and Waseet, I focus on creating scalable, user-friendly
+                  I'm a passionate developer specializing in React Native mobile
+                  applications and Next.js web development. With experience
+                  building comprehensive platforms like Digital Car, Waseet, and
+                  Maysan, and independently delivering full-stack projects like
+                  TeeslaTech end-to-end (frontend, backend, database, and
+                  infrastructure), I focus on creating scalable, user-friendly
                   solutions that make a real impact.
                 </p>
                 <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
@@ -122,7 +105,7 @@ const About = () => {
                     key={skill.title}
                     variants={itemVariants}
                     whileHover={{ scale: 1.02 }}
-                    className="bg-white dark:bg-dark-700 shadow-lg hover:shadow-xl p-6 rounded-xl transition-all duration-300"
+                    className="modern-card-soft hover:scale-[1.02] p-6"
                   >
                     <div className="flex items-start space-x-4">
                       <div
@@ -159,7 +142,7 @@ const About = () => {
               <motion.div
                 key={stat.label}
                 variants={itemVariants}
-                className="bg-white dark:bg-dark-700 shadow-lg p-6 rounded-xl text-center"
+                className="modern-card-soft p-6 text-center"
               >
                 <div className="mb-2 font-bold text-primary-600 dark:text-primary-400 text-3xl">
                   {stat.number}
