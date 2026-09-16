@@ -23,7 +23,7 @@ const SectionHeader = ({
           {eyebrow}
         </p>
       )}
-      <h2 className="mb-6 font-bold text-gray-900 dark:text-white text-4xl sm:text-5xl">
+      <h2 className="mb-6 font-display font-bold text-slate-900 dark:text-white text-4xl sm:text-5xl">
         {beforeHighlight}
         <span className="gradient-text">{highlight}</span>
       </h2>

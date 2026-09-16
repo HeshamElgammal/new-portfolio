@@ -1,116 +1,132 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
+import { Menu, Moon, Sun, X } from 'lucide-react'
 import { useEffect, useState } from 'react'
+import BrandLogo from '@/components/ui/BrandLogo'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(true)
   const [scrolled, setScrolled] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
+    const handleScroll = () => setScrolled(window.scrollY > 24)
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   useEffect(() => {
-    const isDarkMode = localStorage.getItem('darkMode') === 'true'
-    setIsDark(isDarkMode)
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark')
-    }
+    const stored = localStorage.getItem('darkMode')
+    const dark = stored !== 'false'
+    setIsDark(dark)
+    document.documentElement.classList.toggle('dark', dark)
   }, [])
 
   const toggleDarkMode = () => {
-    const newDarkMode = !isDark
-    setIsDark(newDarkMode)
-    localStorage.setItem('darkMode', newDarkMode.toString())
-    if (newDarkMode) {
-      document.documentElement.classList.add('dark')
-    } else {
-      document.documentElement.classList.remove('dark')
-    }
+    const next = !isDark
+    setIsDark(next)
+    localStorage.setItem('darkMode', String(next))
+    document.documentElement.classList.toggle('dark', next)
   }
 
   const navItems = [
-    { name: 'Home', href: '#home' },
+    { name: 'Services', href: '#services' },
+    { name: 'Work', href: '#experience' },
     { name: 'About', href: '#about' },
-    { name: 'Experience', href: '#experience' },
     { name: 'Skills', href: '#skills' },
     { name: 'Contact', href: '#contact' },
   ]
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
-    }
+    document.querySelector(href)?.scrollIntoView({ behavior: 'smooth' })
     setIsMenuOpen(false)
   }
 
   return (
     <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? 'bg-white/80 dark:bg-dark-900/80 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-      }`}
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className="top-0 right-0 left-0 z-50 fixed px-4 sm:px-6 pt-4"
     >
-      <nav className="mx-auto px-4 sm:px-6 lg:px-8 container">
-        <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <motion.div whileHover={{ scale: 1.05 }} className="flex-shrink-0">
-            <span className="font-bold text-2xl gradient-text">
-              Hesham Elgammal
-            </span>
-          </motion.div>
+      <nav
+        className={`mx-auto max-w-6xl rounded-2xl transition-all duration-300 ${
+          scrolled ? 'glass-nav shadow-glow-sm' : 'bg-transparent'
+        }`}
+      >
+        <div className="flex justify-between items-center gap-4 px-4 sm:px-6 h-16">
+          <BrandLogo onClick={() => scrollToSection('#home')} />
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:block">
-            <div className="flex items-baseline space-x-8 ml-10">
-              {navItems.map((item) => (
-                <motion.button
-                  key={item.name}
-                  onClick={() => scrollToSection(item.href)}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="px-3 py-2 font-medium text-gray-700 hover:text-primary-600 dark:hover:text-primary-400 dark:text-gray-300 text-sm transition-colors duration-200"
-                >
-                  {item.name}
-                </motion.button>
-              ))}
-            </div>
+          <div className="hidden lg:flex items-center gap-1">
+            {navItems.map((item) => (
+              <button
+                key={item.name}
+                type="button"
+                onClick={() => scrollToSection(item.href)}
+                className="hover:bg-primary-500/10 px-4 py-2 rounded-lg font-medium text-slate-600 hover:text-primary-600 dark:hover:text-primary-300 dark:text-slate-300 text-sm transition-colors"
+              >
+                {item.name}
+              </button>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => scrollToSection('#contact')}
+              className="hidden sm:inline-flex btn-brand px-4 py-2.5 rounded-xl font-semibold text-sm"
+            >
+              Start a Project
+            </button>
+            <button
+              type="button"
+              onClick={toggleDarkMode}
+              aria-label="Toggle theme"
+              className="hover:bg-slate-200/80 dark:hover:bg-slate-800/80 p-2.5 rounded-xl text-slate-600 dark:text-slate-300 transition-colors"
+            >
+              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+            </button>
+            <button
+              type="button"
+              className="lg:hidden hover:bg-slate-200/80 dark:hover:bg-slate-800/80 p-2.5 rounded-xl"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label="Menu"
+            >
+              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        <motion.div
-          initial={false}
-          animate={{
-            height: isMenuOpen ? 'auto' : 0,
-            opacity: isMenuOpen ? 1 : 0,
-          }}
-          className="md:hidden overflow-hidden"
-        >
-          <div className="space-y-1 bg-white dark:bg-dark-900 shadow-lg mt-2 px-2 pt-2 pb-3 rounded-lg">
-            {navItems.map((item) => (
-              <motion.button
-                key={item.name}
-                onClick={() => scrollToSection(item.href)}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="block hover:bg-gray-50 dark:hover:bg-dark-800 px-3 py-2 rounded-md w-full font-medium text-gray-700 hover:text-primary-600 dark:hover:text-primary-400 dark:text-gray-300 text-base text-left transition-colors duration-200"
-              >
-                {item.name}
-              </motion.button>
-            ))}
-          </div>
-        </motion.div>
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="lg:hidden overflow-hidden border-slate-200/60 dark:border-slate-700/60 border-t"
+            >
+              <div className="space-y-1 p-3">
+                {navItems.map((item) => (
+                  <button
+                    key={item.name}
+                    type="button"
+                    onClick={() => scrollToSection(item.href)}
+                    className="block hover:bg-primary-500/10 px-4 py-3 rounded-xl w-full font-medium text-slate-700 dark:text-slate-200 text-left"
+                  >
+                    {item.name}
+                  </button>
+                ))}
+                <button
+                  type="button"
+                  onClick={() => scrollToSection('#contact')}
+                  className="block btn-brand mt-2 px-4 py-3 rounded-xl w-full font-semibold text-center"
+                >
+                  Start a Project
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </nav>
     </motion.header>
   )

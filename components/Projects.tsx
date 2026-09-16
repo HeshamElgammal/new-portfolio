@@ -128,7 +128,7 @@ const Experience = () => {
   )
 
   return (
-    <section id="experience" className="section-shell bg-white dark:bg-dark-900">
+    <section id="experience" className="section-shell bg-page">
       <div className="section-container">
         <motion.div
           ref={ref}
@@ -139,9 +139,9 @@ const Experience = () => {
         >
           <SectionHeader
             eyebrow="Portfolio"
-            beforeHighlight="Work "
-            highlight="Experience"
-            subtitle="Professional experience building mobile apps, web platforms, and full-stack products — from idea to production."
+            beforeHighlight="Selected "
+            highlight="Case Studies"
+            subtitle="Real products shipped for marketplaces, mobility, recruitment, travel, and full-stack platforms — proof of what I can build for your next project."
           />
 
           <motion.div variants={itemVariants} className="mb-20">

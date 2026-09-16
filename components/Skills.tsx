@@ -91,7 +91,7 @@ const Skills = () => {
   })
 
   return (
-    <section id="skills" className="section-shell bg-gray-50 dark:bg-dark-800">
+    <section id="skills" className="section-shell bg-surface">
       <div className="section-container">
         <motion.div
           ref={ref}

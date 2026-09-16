@@ -5,6 +5,7 @@ import { Code, Users, Zap } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
 import SectionHeader from '@/components/ui/SectionHeader'
 import { containerVariants, itemVariants } from '@/lib/animations'
+import { brand } from '@/lib/brand'
 
 const About = () => {
   const skills = [
@@ -40,7 +41,7 @@ const About = () => {
   })
 
   return (
-    <section id="about" className="section-shell bg-gray-50 dark:bg-dark-800">
+    <section id="about" className="section-shell bg-surface">
       <div className="section-container">
         <motion.div
           ref={ref}
@@ -50,10 +51,10 @@ const About = () => {
           className="mx-auto max-w-6xl"
         >
           <SectionHeader
-            eyebrow="Introduction"
-            beforeHighlight="About "
-            highlight="Me"
-            subtitle="I'm a passionate developer with a love for creating exceptional digital experiences and robust software solutions."
+            eyebrow="The Studio"
+            beforeHighlight=""
+            highlight={brand.name}
+            subtitle={`${brand.studioName} is my freelance product studio — I help companies ship mobile apps, web platforms, and full-stack systems with the reliability clients expect from a dedicated partner.`}
           />
 
           <div className="items-center gap-12 grid lg:grid-cols-2">
@@ -72,31 +73,29 @@ const About = () => {
               </div>
 
               <div className="space-y-6">
-                <h3 className="font-bold text-gray-900 dark:text-white text-2xl">
-                  Hi, I'm Hesham Elgammal
+                <h3 className="font-display font-bold text-slate-900 dark:text-white text-2xl">
+                  About {brand.name}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  I'm a passionate developer specializing in React Native mobile
-                  applications and Next.js web development. With experience
-                  building comprehensive platforms like Digital Car, Waseet, and
-                  Maysan, and independently delivering full-stack projects like
-                  TeeslaTech end-to-end (frontend, backend, database, and
-                  infrastructure), I focus on creating scalable, user-friendly
-                  solutions that make a real impact.
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                  I specialize in React Native mobile applications and Next.js
+                  web development. I&apos;ve helped build platforms like Digital
+                  Car, Waseet, and Maysan, and independently delivered
+                  full-stack products like TeeslaTech — frontend, backend,
+                  database, and infrastructure included.
                 </p>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
-                  My expertise spans mobile app development with React Native,
-                  modern web development with Next.js and TypeScript, and
-                  backend technologies. I'm passionate about creating seamless
-                  user experiences across all platforms.
+                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                  Whether you need a freelance developer for a focused sprint or
+                  a long-term product partner, I bring clear communication,
+                  modern engineering, and a client-first mindset to every
+                  project under {brand.studioName}.
                 </p>
               </div>
             </motion.div>
 
             {/* Right Column - Skills */}
             <motion.div variants={itemVariants} className="space-y-8">
-              <h3 className="mb-8 font-bold text-gray-900 dark:text-white text-2xl">
-                What I Do
+              <h3 className="mb-8 font-display font-bold text-slate-900 dark:text-white text-2xl">
+                What I deliver
               </h3>
 
               <div className="gap-6 grid">
@@ -134,11 +133,11 @@ const About = () => {
             className="gap-8 grid grid-cols-2 md:grid-cols-4 mt-20"
           >
             {[
-              { number: '10+', label: 'Projects Completed' },
-              { number: '3+', label: 'Years Experience' },
-              { number: '100%', label: 'Client Satisfaction' },
-              // { number: '24/7', label: 'Available Support' },
-            ].map((stat, index) => (
+              { number: '10+', label: 'Products Delivered' },
+              { number: '3+', label: 'Years in Production' },
+              { number: '100%', label: 'Client-First Approach' },
+              { number: '24h', label: 'Response Time' },
+            ].map((stat) => (
               <motion.div
                 key={stat.label}
                 variants={itemVariants}
