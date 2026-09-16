@@ -6,6 +6,7 @@ import Experience from '@/components/Projects'
 import Skills from '@/components/Skills'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
+import SeoIdentityBlock from '@/components/SeoIdentityBlock'
 
 export default function Home() {
   return (
@@ -17,6 +18,7 @@ export default function Home() {
       <Experience />
       <Skills />
       <Contact />
+      <SeoIdentityBlock />
       <Footer />
     </main>
   )

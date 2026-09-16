@@ -1,42 +1,75 @@
-import type { Metadata } from "next";
-import { Inter, Plus_Jakarta_Sans } from "next/font/google";
-import "./globals.css";
-import { brand } from "@/lib/brand";
+import type { Metadata } from 'next'
+import { Inter, Plus_Jakarta_Sans } from 'next/font/google'
+import './globals.css'
+import { brand } from '@/lib/brand'
+import { profileSeo } from '@/lib/profile-seo'
+import StructuredData from '@/components/StructuredData'
 
 const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-});
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
 
 const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
-  variable: "--font-display",
-});
+  subsets: ['latin'],
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-display',
+})
+
+const ogImageUrl = `${brand.siteUrl}${brand.ogImage}`
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://heshamelgammal.dev"),
+  metadataBase: new URL(brand.siteUrl),
   title: `${brand.name} | ${brand.tagline}`,
   description: brand.description,
   keywords: [
-    "freelance developer",
-    "react native agency",
-    "next.js development",
-    "mobile app development",
-    "full stack freelancer",
-    "web development egypt",
-    "hesham elgammal",
-    "Hesham Studio",
+    brand.name,
+    profileSeo.givenName,
+    profileSeo.familyName,
+    brand.jobTitle,
+    'React Native developer Egypt',
+    'Next.js developer Cairo',
+    'freelance frontend developer',
+    'mobile app developer',
+    profileSeo.education.institution,
+    ...profileSeo.skills.slice(0, 8),
+    brand.studioName,
   ],
-  authors: [{ name: brand.name }],
+  authors: [{ name: brand.name, url: brand.siteUrl }],
   creator: brand.name,
+  alternates: {
+    canonical: brand.siteUrl,
+  },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://heshamelgammal.dev",
-    title: `${brand.name} | ${brand.tagline}`,
+    type: 'profile',
+    locale: 'en_US',
+    url: brand.siteUrl,
+    title: `${brand.name} | ${brand.jobTitle}`,
     description: brand.description,
     siteName: brand.name,
+    images: [
+      {
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
+        alt: brand.profileImageAlt,
+      },
+      {
+        url: `${brand.siteUrl}${brand.profileImage}`,
+        width: 900,
+        height: 1351,
+        alt: brand.profileImageAlt,
+      },
+    ],
+    firstName: profileSeo.givenName,
+    lastName: profileSeo.familyName,
+    username: 'hesham-elgammal',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: `${brand.name} | ${brand.jobTitle}`,
+    description: brand.description,
+    images: [ogImageUrl],
   },
   robots: {
     index: true,
@@ -44,25 +77,31 @@ export const metadata: Metadata = {
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
-};
+  category: 'technology',
+}
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
+      <head>
+        <link rel="me" href={brand.linkedin} />
+        <link rel="me" href={brand.github} />
+      </head>
       <body
         className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased`}
       >
+        <StructuredData />
         {children}
       </body>
     </html>
-  );
+  )
 }

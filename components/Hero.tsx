@@ -126,9 +126,9 @@ const Hero = () => {
             <div className="modern-card p-8 sm:p-10">
               <BrandLogo />
               <p className="mt-6 mb-8 text-slate-600 dark:text-slate-400 leading-relaxed">
-                From marketplace apps like Digital Car and Waseet to end-to-end
-                builds like TeeslaTech — I deliver production-ready software
-                with clear communication and on-time milestones.
+                From CarLink and Digital Car to Waseet.net and TeeslaTech — I
+                deliver production-ready software with clear communication and
+                on-time milestones.
               </p>
 
               <div className="gap-4 grid grid-cols-3 mb-8">

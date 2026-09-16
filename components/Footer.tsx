@@ -86,9 +86,24 @@ const Footer = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="mb-4 font-semibold text-white">Work with us</h4>
-            <div className="space-y-2 text-slate-400 text-sm">
-              <p>{brand.email}</p>
+            <h4 className="mb-4 font-semibold text-white">Work with me</h4>
+            <address className="space-y-2 not-italic text-slate-400 text-sm">
+              <p>
+                <a
+                  href={`mailto:${brand.email}`}
+                  className="hover:text-primary-300 transition-colors"
+                >
+                  {brand.email}
+                </a>
+              </p>
+              <p>
+                <a
+                  href={brand.phoneTel}
+                  className="hover:text-primary-300 transition-colors"
+                >
+                  {brand.phone}
+                </a>
+              </p>
               <p>
                 <a
                   href={brand.whatsapp}
@@ -100,7 +115,7 @@ const Footer = () => {
                 </a>
               </p>
               <p>{brand.location}</p>
-            </div>
+            </address>
           </motion.div>
         </div>
 

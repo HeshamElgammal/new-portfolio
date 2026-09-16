@@ -1,44 +1,45 @@
-'use client'
+"use client";
 
-import { motion } from 'framer-motion'
-import { Code, Users, Zap } from 'lucide-react'
-import { useInView } from 'react-intersection-observer'
-import SectionHeader from '@/components/ui/SectionHeader'
-import { containerVariants, itemVariants } from '@/lib/animations'
-import { brand } from '@/lib/brand'
+import { motion } from "framer-motion";
+import { Code, Users, Zap } from "lucide-react";
+import Image from "next/image";
+import { useInView } from "react-intersection-observer";
+import SectionHeader from "@/components/ui/SectionHeader";
+import { containerVariants, itemVariants } from "@/lib/animations";
+import { brand } from "@/lib/brand";
 
 const About = () => {
   const skills = [
     {
       icon: Code,
-      title: 'Mobile Development',
-      description: 'React Native, JavaScript, Firebase, Redux',
-      color: 'text-blue-500',
+      title: "Mobile Development",
+      description: "React Native, JavaScript, Firebase, Redux",
+      color: "text-blue-500",
     },
     {
       icon: Zap,
-      title: 'Web Development',
-      description: 'Next.js, TypeScript, Tailwind CSS, React',
-      color: 'text-purple-500',
+      title: "Web Development",
+      description: "Next.js, TypeScript, Tailwind CSS, React",
+      color: "text-purple-500",
     },
     {
       icon: Users,
-      title: 'Backend & Database',
-      description: 'Node.js, PostgreSQL, MongoDB, Express.js',
-      color: 'text-green-500',
+      title: "Backend & Database",
+      description: "Node.js, PostgreSQL, MongoDB, Express.js",
+      color: "text-green-500",
     },
     {
       icon: Code,
-      title: 'Development Tools',
-      description: 'Git, VS Code, Hostinger VPS, API Development',
-      color: 'text-orange-500',
+      title: "Development Tools",
+      description: "Git, VS Code, Hostinger VPS, API Development",
+      color: "text-orange-500",
     },
-  ]
+  ];
 
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
   return (
     <section id="about" className="section-shell bg-surface">
@@ -47,7 +48,7 @@ const About = () => {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? 'visible' : 'hidden'}
+          animate={inView ? "visible" : "hidden"}
           className="mx-auto max-w-6xl"
         >
           <SectionHeader
@@ -60,14 +61,22 @@ const About = () => {
           <div className="items-center gap-12 grid lg:grid-cols-2">
             {/* Left Column - Image and Description */}
             <motion.div variants={itemVariants} className="space-y-8">
-              <div className="relative">
-                <div className="bg-gradient-to-br from-primary-400 to-primary-600 shadow-2xl mx-auto border-4 border-white dark:border-dark-700 rounded-2xl w-80 h-80 overflow-hidden">
-                  <img
-                    src="/hesham-profile.jpg"
-                    alt="Hesham Elgammal - Frontend Developer"
-                    className="w-full h-full object-cover object-top"
+              <div className="relative mx-auto max-w-sm">
+                <figure className="bg-gradient-to-br from-primary-400/20 to-primary-600/20 shadow-2xl p-2 border border-slate-200/80 dark:border-slate-700/80 rounded-2xl">
+                  <Image
+                    src={brand.profileImage}
+                    alt={brand.profileImageAlt}
+                    title={`${brand.name} — ${brand.jobTitle}`}
+                    width={900}
+                    height={1351}
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 384px"
+                    className="rounded-xl w-full h-auto object-cover"
                   />
-                </div>
+                  <figcaption className="mt-3 font-medium text-slate-600 dark:text-slate-400 text-sm text-center">
+                    {brand.name} — {brand.jobTitle}
+                  </figcaption>
+                </figure>
                 <div className="-top-4 -right-4 absolute bg-primary-200 dark:bg-primary-800 opacity-50 rounded-full w-24 h-24"></div>
                 <div className="-bottom-4 -left-4 absolute bg-primary-300 dark:bg-primary-700 opacity-50 rounded-full w-16 h-16"></div>
               </div>
@@ -77,11 +86,11 @@ const About = () => {
                   About {brand.name}
                 </h3>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                  I specialize in React Native mobile applications and Next.js
-                  web development. I&apos;ve helped build platforms like Digital
-                  Car, Waseet, and Maysan, and independently delivered
-                  full-stack products like TeeslaTech — frontend, backend,
-                  database, and infrastructure included.
+                  I specialize in React.js, React Native, and Next.js — from
+                  CarLink at Medica Scope and team leadership at Digital Car to
+                  senior delivery at Waseet.net and independent full-stack
+                  builds like TeeslaTech (frontend, backend, database, and
+                  infrastructure).
                 </p>
                 <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                   Whether you need a freelance developer for a focused sprint or
@@ -133,10 +142,10 @@ const About = () => {
             className="gap-8 grid grid-cols-2 md:grid-cols-4 mt-20"
           >
             {[
-              { number: '10+', label: 'Products Delivered' },
-              { number: '3+', label: 'Years in Production' },
-              { number: '100%', label: 'Client-First Approach' },
-              { number: '24h', label: 'Response Time' },
+              { number: "10+", label: "Products Delivered" },
+              { number: "4+", label: "Years in Production" },
+              { number: "100%", label: "Client-First Approach" },
+              { number: "24h", label: "Response Time" },
             ].map((stat) => (
               <motion.div
                 key={stat.label}
@@ -155,7 +164,7 @@ const About = () => {
         </motion.div>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default About
+export default About;
