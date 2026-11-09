@@ -23,6 +23,8 @@ export type Experience = {
   position: string
   duration: string
   type?: string
+  product: string
+  contribution: string
   description: string
   image?: string
   icon: LucideIcon
@@ -41,12 +43,15 @@ export const experiences: Experience[] = [
     position: 'Senior Frontend Developer',
     duration: 'Jun 2026 - Present',
     type: 'Full-time',
+    product:
+      'Saudi automotive service platform tied to OBD devices, maintenance workflows, and service-center booking.',
+    contribution:
+      'Implemented React Native flows for service requests and center booking, plus Center and Admin dashboards in Next.js within a shared monorepo with REST APIs and GitHub Actions CI/CD.',
     description:
-      'Developing CarLink, a Saudi automotive service platform connected to vehicle OBD devices and digital maintenance workflows. Building React Native experiences for vehicle connectivity, service requests, maintenance flows, and booking service centers. Delivering Center Dashboard and Admin Dashboard in Next.js within a shared monorepo, with reusable frontend architecture, REST API integration, and CI/CD via GitHub Actions for Firebase App Distribution.',
+      'CarLink connects drivers and service centers across mobile and dashboard surfaces for the Saudi market.',
     icon: Car,
     gradient: 'from-teal-600 via-cyan-600 to-blue-600',
     technologies: [
-      'React.js',
       'React Native',
       'Next.js',
       'Monorepo',
@@ -61,16 +66,20 @@ export const experiences: Experience[] = [
     position: 'Frontend Team Lead',
     duration: 'Apr 2023 - Present',
     type: 'Full-time',
+    product:
+      'Saudi marketplace for buying, selling, and automotive services on iOS, Android, and web.',
+    contribution:
+      'Led frontend delivery across React Native surfaces and migrated data-fetching layers to TanStack Query for clearer caching, fewer redundant requests, and easier feature work.',
     description:
-      'Lead frontend delivery across React Native mobile and web-facing experiences for a Saudi platform covering car buying, selling, and automotive services. Coordinate implementation, maintain development standards, and build scalable UI with RESTful API integration. Conduct performance profiling and optimization while contributing to product UI/UX and business flows.',
+      'Digital Car ships cross-platform experiences for automotive buyers and sellers in the Gulf.',
     image: 'https://dcar-prod.s3.amazonaws.com/imgUploads/1736261555964.webp',
     icon: Briefcase,
     gradient: 'from-blue-600 via-indigo-600 to-violet-600',
     technologies: [
       'React Native',
+      'TanStack Query',
       'Team Leadership',
       'RESTful APIs',
-      'Performance Optimization',
     ],
     links: [
       {
@@ -94,8 +103,12 @@ export const experiences: Experience[] = [
     position: 'Senior Mobile & Web Developer',
     duration: 'May 2025 - Jun 2026',
     type: 'Full-time',
+    product:
+      'Regional classifieds marketplace across React Native mobile and Next.js web for listings and user interactions.',
+    contribution:
+      'Built listing and profile flows, reusable UI components, and REST API integrations with design and backend partners for cross-platform releases.',
     description:
-      'Owned production features across React Native mobile and Next.js web applications. Built responsive, reusable UI components and integrated RESTful APIs for listings, user interactions, and dynamic data. Collaborated with design and backend teams to ship scalable, production-ready features with a focus on performance, maintainability, and cross-platform delivery.',
+      'Waseet connects buyers and sellers through mobile and web classifieds experiences.',
     image: 'https://waseet.net/assets/logo-ar.svg',
     icon: ShoppingBag,
     gradient: 'from-orange-500 via-amber-500 to-yellow-500',
@@ -127,8 +140,12 @@ export const experiences: Experience[] = [
     position: 'Full-Stack Developer',
     duration: '2026',
     type: 'Freelance',
+    product:
+      'Public marketing site and admin dashboard for TeeslaTech, backed by a Node/Express API and MongoDB.',
+    contribution:
+      'Delivered end-to-end from Next.js monorepo (marketing + admin) through Express APIs, database models, VPS deployment, and production DNS on Hostinger.',
     description:
-      'Owned the product end-to-end as sole developer — client website, admin dashboard, backend API, database, VPS, domain, and deployment. Built the public site and admin in a Next.js monorepo with Node.js, Express.js, and MongoDB (Mongoose), deployed on Hostinger VPS with full DNS and production configuration.',
+      'TeeslaTech needed a single engineer to ship the full product stack from UI to infrastructure.',
     icon: Globe,
     gradient: 'from-violet-600 via-purple-600 to-fuchsia-600',
     technologies: [
@@ -142,7 +159,7 @@ export const experiences: Experience[] = [
       { label: 'Website', href: 'https://teeslatech.com' },
       { label: 'Admin', href: 'https://admin.teeslatech.com' },
     ],
-    featured: false,
+    featured: true,
   },
   {
     title: 'O-Projects – Web & Mobile Products',
@@ -150,8 +167,11 @@ export const experiences: Experience[] = [
     position: 'Frontend Developer',
     duration: 'Sep 2022 - Dec 2023',
     type: 'Full-time',
+    product: 'Multiple client web and mobile products across affiliate and education verticals.',
+    contribution:
+      'Shipped React.js, Next.js, and React Native features with third-party API integrations and code review participation.',
     description:
-      'Built and maintained frontend features across Affiliate, Lokle, Glia, and Edactik using React.js, Next.js, and React Native. Designed responsive interfaces, integrated third-party APIs, collaborated with cross-functional teams, and participated in code reviews.',
+      'O-Projects delivered frontend work across Affiliate, Lokle, Glia, and Edactik.',
     icon: Smartphone,
     gradient: 'from-indigo-500 via-blue-600 to-cyan-600',
     technologies: ['React.js', 'Next.js', 'React Native', 'Third-party APIs'],
@@ -164,8 +184,12 @@ export const experiences: Experience[] = [
     position: 'React Native Developer',
     duration: 'Apr 2023 - Jul 2023',
     type: 'Contract',
+    product:
+      'Travel services app for flights, hotels, and chauffeur booking on iOS and Android.',
+    contribution:
+      'Built cross-platform React Native features and improved maintainability through modular structure and state management.',
     description:
-      'Contributed to Macqueen, a travel services platform for flight booking, accommodation, and chauffeur services. Built cross-platform React Native features and improved maintainability through modularization and efficient state management.',
+      'Macqueen serves travelers with bundled mobility and lodging services.',
     icon: Plane,
     gradient: 'from-sky-500 via-blue-500 to-indigo-600',
     technologies: ['React Native', 'State Management', 'Modular Architecture'],
@@ -187,8 +211,10 @@ export const experiences: Experience[] = [
     position: 'React Native Instructor',
     duration: 'Jul 2022 - Sep 2022',
     type: 'Part-time',
-    description:
-      'Delivered React Native training for beginner and intermediate learners, including practical exercises, debugging sessions, code review, and structured course materials.',
+    product: 'Instructor-led React Native curriculum for beginners and intermediate developers.',
+    contribution:
+      'Ran hands-on sessions, debugging labs, code review, and structured coursework.',
+    description: 'DotPy training program for mobile developers in Cairo.',
     icon: GraduationCap,
     gradient: 'from-amber-500 via-orange-500 to-red-500',
     technologies: ['React Native', 'Teaching', 'Code Review', 'Curriculum Design'],
@@ -200,8 +226,10 @@ export const experiences: Experience[] = [
     position: 'React Native Developer',
     duration: 'Nov 2021 - Sep 2022',
     type: 'Full-time',
-    description:
-      'Developed and maintained Turkish Stores and Petal Egypt e-commerce applications using React Native for iOS and Android. Integrated payment gateways and authentication and improved performance through optimized Redux state management.',
+    product: 'E-commerce mobile apps for Turkish Stores and Petal Egypt.',
+    contribution:
+      'Integrated payment gateways and authentication and optimized Redux-based state for catalog and checkout flows.',
+    description: 'Blue Brain retail apps on iOS and Android.',
     icon: Store,
     gradient: 'from-rose-500 via-pink-500 to-fuchsia-600',
     technologies: ['React Native', 'Redux', 'Payment Gateways', 'E-Commerce'],
@@ -214,8 +242,10 @@ export const experiences: Experience[] = [
     position: 'React Native Developer',
     duration: 'Freelance',
     type: 'Freelance',
-    description:
-      'Completed a full revamp of the DrugGo mobile application for healthcare professionals — improving performance in search and navigation, migrating to the latest React Native, redesigning UI/UX, and refactoring the codebase for scalability and maintainability.',
+    product: 'Clinical decision support and pharmacy reference app for healthcare professionals.',
+    contribution:
+      'Revamped search and navigation performance, upgraded React Native, and refactored UI/UX for maintainability.',
+    description: 'DrugGo supports clinicians with drug reference and search workflows.',
     icon: Pill,
     gradient: 'from-cyan-500 via-sky-500 to-blue-600',
     technologies: [
@@ -233,8 +263,10 @@ export const experiences: Experience[] = [
     position: 'React Native Developer',
     duration: 'Freelance',
     type: 'Freelance',
-    description:
-      'Built a cross-platform hiking app with trail discovery, interactive maps, route tracking, and offline access for outdoor enthusiasts.',
+    product: 'Cross-platform hiking app with trails, maps, and offline access.',
+    contribution:
+      'Implemented trail discovery, interactive maps, and offline route access in React Native.',
+    description: 'Hike-Time helps outdoor enthusiasts plan and track routes.',
     icon: Mountain,
     gradient: 'from-green-600 via-emerald-600 to-lime-600',
     technologies: [
@@ -253,3 +285,22 @@ export const getExperienceLinks = (experience: Experience) => {
     return [{ label: 'View Project', href: experience.live }]
   return []
 }
+
+/** Featured order: CarLink, Digital Car, Waseet, TeeslaTech first. */
+export const featuredExperienceOrder = [
+  'CarLink – Automotive Service Platform',
+  'Digital Car – Saudi Automotive Platform',
+  'Waseet.net – Classifieds Platform',
+  'TeeslaTech – Full-Stack Web Platform & Admin Dashboard',
+] as const
+
+export const sortFeaturedExperiences = (items: Experience[]) =>
+  [...items].sort(
+    (a, b) =>
+      featuredExperienceOrder.indexOf(
+        a.title as (typeof featuredExperienceOrder)[number],
+      ) -
+      featuredExperienceOrder.indexOf(
+        b.title as (typeof featuredExperienceOrder)[number],
+      ),
+  )

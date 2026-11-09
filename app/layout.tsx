@@ -91,7 +91,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth dark" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <link rel="me" href={brand.linkedin} />
         <link rel="me" href={brand.github} />

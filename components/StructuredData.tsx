@@ -105,7 +105,7 @@ const StructuredData = () => {
     },
     {
       '@type': 'ItemList',
-      '@id': `${brand.siteUrl}/#experience`,
+      '@id': `${brand.siteUrl}/#selected-work`,
       name: `${brand.name} professional experience`,
       itemListElement: workExperienceSchema,
     },

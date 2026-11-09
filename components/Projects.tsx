@@ -8,9 +8,11 @@ import ProjectCover from '@/components/ui/ProjectCover'
 import {
   experiences,
   getExperienceLinks,
+  sortFeaturedExperiences,
   type Experience,
 } from '@/data/experiences'
 import { containerVariants, itemVariants } from '@/lib/animations'
+import { brand } from '@/lib/brand'
 
 const ExperienceCard = ({
   experience,
@@ -22,10 +24,10 @@ const ExperienceCard = ({
   const links = getExperienceLinks(experience)
 
   return (
-    <motion.article
+    <motion.div
+      role="article"
       variants={itemVariants}
-      whileHover={{ y: featured ? -5 : -3 }}
-      className="group modern-card overflow-hidden"
+      className="group modern-card overflow-hidden hover:-translate-y-1 transition-transform duration-200"
     >
       <ProjectCover
         company={experience.company}
@@ -62,12 +64,20 @@ const ExperienceCard = ({
         </div>
 
         <p
-          className={`text-gray-600 dark:text-gray-400 leading-relaxed ${featured ? 'mb-4' : 'mb-3 text-sm'}`}
+          className={`text-gray-700 dark:text-gray-300 font-medium ${featured ? 'mb-2 text-sm' : 'mb-1.5 text-xs'}`}
         >
-          {experience.description}
+          {experience.product}
+        </p>
+        <p
+          className={`text-gray-600 dark:text-gray-400 leading-relaxed ${featured ? 'mb-3 text-sm' : 'mb-2 text-sm'}`}
+        >
+          <span className="font-medium text-gray-800 dark:text-gray-200">
+            My role:{' '}
+          </span>
+          {experience.contribution}
         </p>
 
-        <div
+        <motion.div
           className={`flex flex-wrap gap-2 ${featured ? 'mb-4' : 'mb-3'}`}
         >
           {(featured
@@ -86,7 +96,7 @@ const ExperienceCard = ({
               +{experience.technologies.length - 3}
             </span>
           )}
-        </div>
+        </motion.div>
 
         {links.length > 0 && (
           <div className="flex flex-wrap gap-3 pt-1 border-gray-100 dark:border-dark-700 border-t">
@@ -98,11 +108,12 @@ const ExperienceCard = ({
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.97 }}
-                className={`inline-flex items-center font-medium text-primary-600 hover:text-primary-700 dark:hover:text-primary-300 dark:text-primary-400 transition-colors duration-200 ${featured ? '' : 'text-sm'}`}
+                className={`inline-flex items-center font-medium text-primary-600 hover:text-primary-700 dark:hover:text-primary-300 dark:text-primary-400 transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 ${featured ? '' : 'text-sm'}`}
               >
                 <ExternalLink
                   size={featured ? 16 : 14}
                   className={featured ? 'mr-2' : 'mr-1.5'}
+                  aria-hidden
                 />
                 {link.label}
               </motion.a>
@@ -110,7 +121,7 @@ const ExperienceCard = ({
           </div>
         )}
       </div>
-    </motion.article>
+    </motion.div>
   )
 }
 
@@ -120,15 +131,15 @@ const Experience = () => {
     threshold: 0.1,
   })
 
-  const featuredExperiences = experiences.filter(
-    (experience) => experience.featured
+  const featuredExperiences = sortFeaturedExperiences(
+    experiences.filter((experience) => experience.featured),
   )
   const otherExperiences = experiences.filter(
-    (experience) => !experience.featured
+    (experience) => !experience.featured,
   )
 
   return (
-    <section id="experience" className="section-shell bg-page">
+    <section id="selected-work" className="section-shell bg-page scroll-mt-28">
       <div className="section-container">
         <motion.div
           ref={ref}
@@ -140,17 +151,11 @@ const Experience = () => {
           <SectionHeader
             eyebrow="Portfolio"
             beforeHighlight="Selected "
-            highlight="Case Studies"
-            subtitle="Real products shipped for marketplaces, mobility, recruitment, travel, and full-stack platforms — proof of what I can build for your next project."
+            highlight="Work"
+            subtitle="Production apps and platforms for automotive, classifieds, and full-stack delivery — with verified store and web links where available."
           />
 
           <motion.div variants={itemVariants} className="mb-20">
-            <div className="flex items-center gap-3 mb-8">
-              <div className="bg-primary-600 rounded-full w-2 h-2" />
-              <h3 className="font-bold text-gray-900 dark:text-white text-2xl">
-                Current & Recent Experience
-              </h3>
-            </div>
             <div className="gap-8 grid lg:grid-cols-2">
               {featuredExperiences.map((experience) => (
                 <ExperienceCard
@@ -166,7 +171,7 @@ const Experience = () => {
             <div className="flex items-center gap-3 mb-8">
               <div className="bg-gray-400 dark:bg-gray-500 rounded-full w-2 h-2" />
               <h3 className="font-bold text-gray-900 dark:text-white text-2xl">
-                Previous Experience
+                More experience
               </h3>
             </div>
             <div className="gap-6 grid md:grid-cols-2 lg:grid-cols-3">
@@ -178,15 +183,15 @@ const Experience = () => {
 
           <motion.div variants={itemVariants} className="mt-12 text-center">
             <motion.a
-              href="https://github.com/HeshamElgammal"
+              href={brand.github}
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="inline-flex items-center bg-primary-600 hover:bg-primary-700 shadow-lg hover:shadow-xl px-8 py-4 rounded-xl font-semibold text-white text-lg transition-colors duration-200"
+              className="inline-flex items-center bg-primary-600 hover:bg-primary-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-400 shadow-lg hover:shadow-xl px-8 py-4 rounded-xl font-semibold text-white text-lg transition-colors duration-200"
             >
               View More on GitHub
-              <ArrowRight className="ml-2" size={20} />
+              <ArrowRight className="ml-2" size={20} aria-hidden />
             </motion.a>
           </motion.div>
         </motion.div>

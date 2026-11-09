@@ -1,5 +1,6 @@
 import { brand } from '@/lib/brand'
 import { profileSeo } from '@/lib/profile-seo'
+import { siteCopy } from '@/lib/site-copy'
 
 /**
  * Server-rendered, crawlable summary of professional data (visible, compact).
@@ -18,8 +19,7 @@ const SeoIdentityBlock = () => {
               {brand.name}
             </strong>{' '}
             is a {brand.jobTitle} based in {profileSeo.addressLocality},{' '}
-            {profileSeo.addressCountry}, operating {brand.studioName} for
-            freelance and contract work worldwide. Contact:{' '}
+            {profileSeo.addressCountry}. {siteCopy.intro} Contact:{' '}
             <a
               href={`mailto:${brand.email}`}
               className="text-primary-600 dark:text-primary-400 underline-offset-2 hover:underline"

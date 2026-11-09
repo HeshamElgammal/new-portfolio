@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import { Code, Users, Zap } from "lucide-react";
-import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import SectionHeader from "@/components/ui/SectionHeader";
 import { containerVariants, itemVariants } from "@/lib/animations";
 import { brand } from "@/lib/brand";
+import { siteCopy } from "@/lib/site-copy";
 
 const About = () => {
   const skills = [
@@ -42,7 +42,7 @@ const About = () => {
   });
 
   return (
-    <section id="about" className="section-shell bg-surface">
+    <section id="about" className="section-shell bg-surface scroll-mt-28">
       <div className="section-container">
         <motion.div
           ref={ref}
@@ -55,111 +55,51 @@ const About = () => {
             eyebrow="The Studio"
             beforeHighlight=""
             highlight={brand.name}
-            subtitle={`${brand.studioName} is my freelance product studio — I help companies ship mobile apps, web platforms, and full-stack systems with the reliability clients expect from a dedicated partner.`}
+            subtitle={siteCopy.aboutLead}
           />
 
-          <div className="items-center gap-12 grid lg:grid-cols-2">
-            {/* Left Column - Image and Description */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <div className="relative mx-auto max-w-sm">
-                <figure className="bg-gradient-to-br from-primary-400/20 to-primary-600/20 shadow-2xl p-2 border border-slate-200/80 dark:border-slate-700/80 rounded-2xl">
-                  <Image
-                    src={brand.profileImage}
-                    alt={brand.profileImageAlt}
-                    title={`${brand.name} — ${brand.jobTitle}`}
-                    width={900}
-                    height={1351}
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 384px"
-                    className="rounded-xl w-full h-auto object-cover"
-                  />
-                  <figcaption className="mt-3 font-medium text-slate-600 dark:text-slate-400 text-sm text-center">
-                    {brand.name} — {brand.jobTitle}
-                  </figcaption>
-                </figure>
-                <div className="-top-4 -right-4 absolute bg-primary-200 dark:bg-primary-800 opacity-50 rounded-full w-24 h-24"></div>
-                <div className="-bottom-4 -left-4 absolute bg-primary-300 dark:bg-primary-700 opacity-50 rounded-full w-16 h-16"></div>
-              </div>
+          <motion.div variants={itemVariants} className="mb-12 max-w-3xl">
+            <h3 className="mb-4 font-display font-bold text-slate-900 dark:text-white text-2xl">
+              About {brand.name}
+            </h3>
+            <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+              {siteCopy.aboutSupport}
+            </p>
+            <p className="mt-4 font-medium text-slate-700 dark:text-slate-300 text-sm">
+              {siteCopy.heroSince}
+            </p>
+          </motion.div>
 
-              <div className="space-y-6">
-                <h3 className="font-display font-bold text-slate-900 dark:text-white text-2xl">
-                  About {brand.name}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                  I specialize in React.js, React Native, and Next.js — from
-                  CarLink at Medica Scope and team leadership at Digital Car to
-                  senior delivery at Waseet.net and independent full-stack
-                  builds like TeeslaTech (frontend, backend, database, and
-                  infrastructure).
-                </p>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
-                  Whether you need a freelance developer for a focused sprint or
-                  a long-term product partner, I bring clear communication,
-                  modern engineering, and a client-first mindset to every
-                  project under {brand.studioName}.
-                </p>
-              </div>
-            </motion.div>
+          <motion.div variants={itemVariants} className="space-y-8">
+            <h3 className="font-display font-bold text-slate-900 dark:text-white text-2xl">
+              What I deliver
+            </h3>
 
-            {/* Right Column - Skills */}
-            <motion.div variants={itemVariants} className="space-y-8">
-              <h3 className="mb-8 font-display font-bold text-slate-900 dark:text-white text-2xl">
-                What I deliver
-              </h3>
-
-              <div className="gap-6 grid">
-                {skills.map((skill, index) => (
-                  <motion.div
-                    key={skill.title}
-                    variants={itemVariants}
-                    whileHover={{ scale: 1.02 }}
-                    className="modern-card-soft hover:scale-[1.02] p-6"
-                  >
-                    <div className="flex items-start space-x-4">
-                      <div
-                        className={`p-3 rounded-lg bg-gray-100 dark:bg-dark-600 ${skill.color}`}
-                      >
-                        <skill.icon size={24} />
-                      </div>
-                      <div className="flex-1">
-                        <h4 className="mb-2 font-semibold text-gray-900 dark:text-white text-xl">
-                          {skill.title}
-                        </h4>
-                        <p className="text-gray-600 dark:text-gray-400">
-                          {skill.description}
-                        </p>
-                      </div>
+            <div className="gap-6 grid md:grid-cols-2">
+              {skills.map((skill) => (
+                <motion.div
+                  key={skill.title}
+                  variants={itemVariants}
+                  className="modern-card-soft p-6"
+                >
+                  <div className="flex items-start space-x-4">
+                    <div
+                      className={`p-3 rounded-lg bg-gray-100 dark:bg-dark-600 ${skill.color}`}
+                    >
+                      <skill.icon size={24} />
                     </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
-
-          {/* Stats Section */}
-          <motion.div
-            variants={itemVariants}
-            className="gap-8 grid grid-cols-2 md:grid-cols-4 mt-20"
-          >
-            {[
-              { number: "10+", label: "Products Delivered" },
-              { number: "4+", label: "Years in Production" },
-              { number: "100%", label: "Client-First Approach" },
-              { number: "24h", label: "Response Time" },
-            ].map((stat) => (
-              <motion.div
-                key={stat.label}
-                variants={itemVariants}
-                className="modern-card-soft p-6 text-center"
-              >
-                <div className="mb-2 font-bold text-primary-600 dark:text-primary-400 text-3xl">
-                  {stat.number}
-                </div>
-                <div className="font-medium text-gray-600 dark:text-gray-400">
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+                    <div className="flex-1">
+                      <h4 className="mb-2 font-semibold text-gray-900 dark:text-white text-xl">
+                        {skill.title}
+                      </h4>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        {skill.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
           </motion.div>
         </motion.div>
       </div>

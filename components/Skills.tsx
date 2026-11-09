@@ -91,7 +91,7 @@ const Skills = () => {
   })
 
   return (
-    <section id="skills" className="section-shell bg-surface">
+    <section id="skills" className="section-shell bg-surface scroll-mt-28">
       <div className="section-container">
         <motion.div
           ref={ref}
@@ -137,7 +137,7 @@ const Skills = () => {
                 <div
                   className={`flex items-center gap-3 bg-gradient-to-r ${category.gradient} px-6 py-4`}
                 >
-                  <div className="flex justify-center items-center bg-white/20 backdrop-blur-sm border border-white/25 rounded-xl w-10 h-10 text-white">
+                  <div className="flex justify-center items-center bg-white/25 border border-white/25 rounded-xl w-10 h-10 text-white">
                     <category.icon size={20} />
                   </div>
                   <h3 className="font-bold text-white text-lg">

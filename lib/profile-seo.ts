@@ -40,7 +40,7 @@ export const profileSeo = {
   workHistory: [
     {
       company: 'Medica Scope',
-      role: 'Senior Frontend Developer',
+      role: 'Senior Frontend Engineer',
       project: 'CarLink',
       startDate: '2026-06',
       endDate: null as string | null,
@@ -57,7 +57,7 @@ export const profileSeo = {
       employmentType: 'Full-time',
       location: 'Cairo, Egypt',
       description:
-        'Lead frontend for Saudi automotive marketplace — React Native, REST APIs, performance optimization.',
+        'Lead frontend for Saudi automotive marketplace — React Native, TanStack Query migration, REST APIs.',
     },
     {
       company: 'Waseet',

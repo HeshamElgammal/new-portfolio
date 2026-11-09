@@ -64,7 +64,7 @@ const Contact = () => {
   ]
 
   return (
-    <section id="contact" className="section-shell bg-surface-muted">
+    <section id="contact" className="section-shell bg-surface-muted scroll-mt-28">
       <div className="section-container">
         <motion.div
           ref={ref}
@@ -172,7 +172,7 @@ const Contact = () => {
 
                 <div className="space-y-3">
                   <motion.a
-                    href={`mailto:${brand.email}?subject=Project%20inquiry%20-%20Elgammal%20Digital`}
+                    href={`mailto:${brand.email}?subject=Project%20inquiry%20-%20${encodeURIComponent(brand.name)}`}
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     className="flex justify-center items-center gap-2 btn-brand px-6 py-3.5 rounded-xl w-full font-semibold"

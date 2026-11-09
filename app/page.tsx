@@ -13,9 +13,9 @@ export default function Home() {
     <main className="min-h-screen bg-page">
       <Header />
       <Hero />
+      <Experience />
       <Services />
       <About />
-      <Experience />
       <Skills />
       <Contact />
       <SeoIdentityBlock />

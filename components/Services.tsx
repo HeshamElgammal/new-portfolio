@@ -59,7 +59,7 @@ const Services = () => {
   }
 
   return (
-    <section id="services" className="section-shell bg-surface-muted">
+    <section id="services" className="section-shell bg-surface-muted scroll-mt-28">
       <div className="section-container">
         <motion.div
           ref={ref}
