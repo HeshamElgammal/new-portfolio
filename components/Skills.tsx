@@ -21,12 +21,12 @@ const skillCategories = [
     icon: Smartphone,
     gradient: 'from-blue-500 to-cyan-500',
     skills: [
-      { name: 'React Native', level: 95 },
-      { name: 'JavaScript', level: 92 },
-      { name: 'Firebase', level: 88 },
-      { name: 'Redux', level: 85 },
-      { name: 'Native Modules', level: 80 },
-      { name: 'Mobile APIs', level: 90 },
+      'React Native',
+      'JavaScript',
+      'Firebase',
+      'Redux',
+      'Native Modules',
+      'Mobile APIs',
     ],
   },
   {
@@ -34,12 +34,12 @@ const skillCategories = [
     icon: Globe,
     gradient: 'from-violet-500 to-purple-500',
     skills: [
-      { name: 'Next.js', level: 90 },
-      { name: 'React', level: 95 },
-      { name: 'TypeScript', level: 88 },
-      { name: 'Tailwind CSS', level: 90 },
-      { name: 'HTML/CSS', level: 95 },
-      { name: 'REST APIs', level: 90 },
+      'Next.js',
+      'React',
+      'TypeScript',
+      'Tailwind CSS',
+      'HTML/CSS',
+      'REST APIs',
     ],
   },
   {
@@ -47,25 +47,19 @@ const skillCategories = [
     icon: Database,
     gradient: 'from-emerald-500 to-teal-500',
     skills: [
-      { name: 'Node.js', level: 85 },
-      { name: 'Express.js', level: 88 },
-      { name: 'PostgreSQL', level: 82 },
-      { name: 'MongoDB', level: 78 },
-      { name: 'Python', level: 80 },
-      { name: 'API Development', level: 90 },
+      'Node.js',
+      'Express.js',
+      'PostgreSQL',
+      'MongoDB',
+      'Python',
+      'API Development',
     ],
   },
   {
     title: 'Development Tools',
     icon: Wrench,
     gradient: 'from-orange-500 to-amber-500',
-    skills: [
-      { name: 'Git', level: 92 },
-      { name: 'VS Code', level: 95 },
-      { name: 'Hostinger VPS', level: 82 },
-      { name: 'AWS', level: 70 },
-      { name: 'Testing', level: 85 },
-    ],
+    skills: ['Git', 'VS Code', 'Hostinger VPS', 'AWS', 'Testing'],
   },
 ]
 
@@ -116,8 +110,7 @@ const Skills = () => {
                 <motion.div
                   key={tech.name}
                   variants={itemVariants}
-                  whileHover={{ y: -3, scale: 1.03 }}
-                  className="inline-flex items-center gap-2 bg-white dark:bg-dark-700/80 shadow-sm hover:shadow-md px-4 py-2.5 border border-gray-200/80 dark:border-dark-600/80 rounded-full text-gray-700 dark:text-gray-200 transition-all duration-200"
+                  className="inline-flex items-center gap-2 bg-white dark:bg-dark-700/80 shadow-sm px-4 py-2.5 border border-gray-200/80 dark:border-dark-600/80 rounded-full text-gray-700 dark:text-gray-200"
                 >
                   <tech.icon size={16} className="text-primary-500" />
                   <span className="font-medium text-sm">{tech.name}</span>
@@ -127,11 +120,10 @@ const Skills = () => {
           </motion.div>
 
           <div className="gap-6 grid md:grid-cols-2">
-            {skillCategories.map((category, categoryIndex) => (
+            {skillCategories.map((category) => (
               <motion.div
                 key={category.title}
                 variants={itemVariants}
-                whileHover={{ y: -4 }}
                 className="group modern-card-soft overflow-hidden"
               >
                 <div
@@ -145,34 +137,16 @@ const Skills = () => {
                   </h3>
                 </div>
 
-                <div className="space-y-4 p-6">
-                  {category.skills.map((skill, skillIndex) => (
-                    <div key={skill.name} className="space-y-2">
-                      <div className="flex justify-between items-center">
-                        <span className="font-medium text-gray-800 dark:text-gray-200 text-sm">
-                          {skill.name}
-                        </span>
-                        <span className="font-semibold text-primary-600 dark:text-primary-400 text-xs">
-                          {skill.level}%
-                        </span>
-                      </div>
-                      <div className="bg-gray-100 dark:bg-dark-600 rounded-full w-full h-1.5 overflow-hidden">
-                        <motion.div
-                          className={`h-full rounded-full bg-gradient-to-r ${category.gradient}`}
-                          initial={{ width: 0 }}
-                          animate={
-                            inView ? { width: `${skill.level}%` } : { width: 0 }
-                          }
-                          transition={{
-                            duration: 1.2,
-                            delay: categoryIndex * 0.15 + skillIndex * 0.08,
-                            ease: 'easeOut',
-                          }}
-                        />
-                      </div>
-                    </div>
+                <ul className="flex flex-wrap gap-2 p-6">
+                  {category.skills.map((skill) => (
+                    <li
+                      key={skill}
+                      className="bg-gray-100 dark:bg-dark-700 px-3 py-1.5 border border-gray-200 dark:border-dark-600 rounded-full font-medium text-gray-800 dark:text-gray-200 text-sm"
+                    >
+                      {skill}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </motion.div>
             ))}
           </div>

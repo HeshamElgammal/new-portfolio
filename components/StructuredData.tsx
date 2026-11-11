@@ -56,13 +56,19 @@ const StructuredData = () => {
       email: `mailto:${brand.email}`,
       telephone: brand.phone,
       url: brand.siteUrl,
-      image: {
-        '@type': 'ImageObject',
-        url: `${brand.siteUrl}${brand.profileImage}`,
-        contentUrl: `${brand.siteUrl}${brand.profileImage}`,
-        caption: brand.profileImageAlt,
-        name: `${brand.name} professional photo`,
-      },
+      image: [
+        `${brand.siteUrl}${brand.profileImage}`,
+        {
+          '@type': 'ImageObject',
+          url: `${brand.siteUrl}${brand.profileImage}`,
+          contentUrl: `${brand.siteUrl}${brand.profileImage}`,
+          width: 1200,
+          height: 1200,
+          encodingFormat: 'image/jpeg',
+          caption: brand.profileImageAlt,
+          name: `${brand.name} professional photo`,
+        },
+      ],
       address: {
         '@type': 'PostalAddress',
         addressLocality: profileSeo.addressLocality,

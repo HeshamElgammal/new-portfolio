@@ -49,15 +49,15 @@ export const metadata: Metadata = {
     siteName: brand.name,
     images: [
       {
-        url: ogImageUrl,
+        url: `${brand.siteUrl}${brand.profileImage}`,
         width: 1200,
-        height: 630,
+        height: 1200,
         alt: brand.profileImageAlt,
       },
       {
-        url: `${brand.siteUrl}${brand.profileImage}`,
-        width: 900,
-        height: 1351,
+        url: ogImageUrl,
+        width: 1200,
+        height: 630,
         alt: brand.profileImageAlt,
       },
     ],
@@ -95,6 +95,7 @@ export default function RootLayout({
       <head>
         <link rel="me" href={brand.linkedin} />
         <link rel="me" href={brand.github} />
+        <link rel="preload" as="image" href={brand.profileImage} />
       </head>
       <body
         className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased`}

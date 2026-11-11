@@ -23,5 +23,5 @@ export const brand = {
   heroImageAlt:
     'Hesham Elgammal presenting React, Next.js, and TypeScript holograms — Senior Frontend Engineer',
   profileImageAlt:
-    'Hesham Elgammal, Senior Frontend Engineer — professional portrait',
+    'Hesham Elgammal, Senior Frontend Engineer specializing in React Native and Next.js',
 } as const
