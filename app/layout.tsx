@@ -40,6 +40,15 @@ export const metadata: Metadata = {
   alternates: {
     canonical: brand.siteUrl,
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/brand/he-icon-32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/brand/he-icon-16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/brand/he-icon-64.png', sizes: '64x64', type: 'image/png' },
+    ],
+    apple: [{ url: '/brand/apple-touch-icon.png', sizes: '180x180', type: 'image/png' }],
+  },
   openGraph: {
     type: 'profile',
     locale: 'en_US',
