@@ -1,6 +1,6 @@
 /** Shared marketing copy — keep Hero, About, SEO, and JSON-LD aligned. */
 export const siteCopy = {
-  roleLine: 'Senior Frontend Engineer · React Native & Next.js',
+  roleLine: 'Senior Frontend & Mobile Engineer · React Native & Next.js',
   intro:
     'I build production iOS and Android apps, Next.js web products, and operator dashboards for teams in Egypt and the Gulf — from booking and marketplace flows to full-stack delivery.',
   heroSince: 'Building production apps since 2021.',

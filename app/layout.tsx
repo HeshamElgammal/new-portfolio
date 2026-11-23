@@ -7,13 +7,13 @@ import StructuredData from '@/components/StructuredData'
 
 const inter = Inter({
   subsets: ['latin'],
-  variable: '--font-sans',
+  variable: '--font-sans-loaded',
 })
 
 const plusJakarta = Plus_Jakarta_Sans({
   subsets: ['latin'],
   weight: ['500', '600', '700', '800'],
-  variable: '--font-display',
+  variable: '--font-display-loaded',
 })
 
 const ogImageUrl = `${brand.siteUrl}${brand.ogImage}`
@@ -91,15 +91,16 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="dark" suppressHydrationWarning>
+    <html
+      lang="en"
+      className={`dark ${inter.variable} ${plusJakarta.variable}`}
+      suppressHydrationWarning
+    >
       <head>
         <link rel="me" href={brand.linkedin} />
         <link rel="me" href={brand.github} />
-        <link rel="preload" as="image" href={brand.profileImage} />
       </head>
-      <body
-        className={`${inter.variable} ${plusJakarta.variable} font-sans antialiased`}
-      >
+      <body className="font-sans antialiased">
         <StructuredData />
         {children}
       </body>
