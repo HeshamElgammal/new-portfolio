@@ -1,116 +1,185 @@
 'use client'
 
+import Image from 'next/image'
 import { motion, useReducedMotion } from 'framer-motion'
-import { ArrowRight, Download } from 'lucide-react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import { brand } from '@/lib/brand'
-import { siteCopy } from '@/lib/site-copy'
+
+const expertise = [
+  'React Native',
+  'React.js',
+  'Next.js',
+  'TypeScript',
+  'Cross-platform Mobile',
+]
+
+const stats = [
+  { value: '6+ yrs', label: 'Professional experience' },
+  { value: 'iOS · Android · Web', label: 'Platforms I ship to' },
+  { value: 'Egypt · Remote', label: 'Working with Gulf teams' },
+]
 
 const Hero = () => {
-  const prefersReducedMotion = useReducedMotion()
+  const reduce = useReducedMotion()
 
-  const entrance = prefersReducedMotion
-    ? { initial: false as const, animate: false as const }
-    : { initial: 'hidden' as const, animate: 'visible' as const }
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { delayChildren: 0.15, staggerChildren: 0.1 },
-    },
-  }
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1 },
-  }
+  const fadeUp = (delay: number) =>
+    reduce
+      ? {}
+      : {
+          initial: { opacity: 0, y: 16 },
+          animate: { opacity: 1, y: 0 },
+          transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] as const },
+        }
 
   return (
     <section
       id="home"
-      className="relative flex items-center min-h-[72vh] sm:min-h-[78vh] overflow-hidden bg-page hero-mesh"
+      className="relative isolate overflow-hidden bg-dark-950 pt-32 pb-20 sm:pt-36 lg:min-h-[100svh] lg:pb-28"
     >
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,rgba(5,11,20,0.03))] dark:bg-[linear-gradient(to_bottom,transparent,rgba(5,11,20,0.6))]" />
+      {/* Ambient background */}
       <div
-        className="top-1/4 -left-32 absolute bg-primary-500/15 rounded-full w-96 h-96 pointer-events-none"
         aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(60%_50%_at_15%_0%,rgba(20,184,166,0.22),transparent_70%),radial-gradient(50%_45%_at_95%_20%,rgba(37,99,235,0.18),transparent_70%)]"
       />
       <div
-        className="right-0 bottom-1/4 absolute bg-blue-600/10 rounded-full w-80 h-80 pointer-events-none"
         aria-hidden
+        className="pointer-events-none absolute inset-0 -z-10 opacity-[0.05] bg-[linear-gradient(rgba(255,255,255,1)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,1)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_at_top,black,transparent_70%)]"
       />
 
-      <div className="z-10 relative mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 container">
-        <motion.div
-          variants={containerVariants}
-          initial={entrance.initial}
-          animate={entrance.animate}
-          className="mx-auto max-w-3xl text-left lg:text-center lg:mx-auto"
-        >
+      <div className="section-container">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-16">
           <div>
-            <motion.p
-              variants={itemVariants}
-              className="mb-4 font-semibold text-primary-600 dark:text-primary-400 text-sm sm:text-base tracking-wide"
+            <motion.div
+              {...fadeUp(0)}
+              className="inline-flex items-center gap-2.5 rounded-full border border-white/10 bg-white/[0.04] px-4 py-1.5 text-xs font-medium text-slate-300 backdrop-blur"
             >
-              {siteCopy.roleLine}
-            </motion.p>
+              <span className="relative flex h-2 w-2" aria-hidden>
+                <span className="absolute inline-flex h-full w-full rounded-full bg-primary-400 opacity-60 motion-safe:animate-ping" />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-400" />
+              </span>
+              6 years building scalable mobile &amp; web applications
+            </motion.div>
 
             <motion.h1
-              variants={itemVariants}
-              className="mb-6 font-display font-extrabold text-slate-900 dark:text-white text-4xl sm:text-5xl lg:text-6xl leading-[1.08] tracking-tight"
+              {...fadeUp(0.08)}
+              className="mt-6 font-display font-extrabold text-white text-5xl leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl"
             >
               {brand.name}
             </motion.h1>
 
             <motion.p
-              variants={itemVariants}
-              className="mb-6 max-w-xl lg:mx-auto text-slate-600 dark:text-slate-400 text-lg leading-relaxed"
+              {...fadeUp(0.14)}
+              className="mt-4 font-display font-semibold text-2xl leading-snug sm:text-3xl"
             >
-              {siteCopy.intro}
+              <span className="bg-gradient-to-r from-primary-300 via-primary-400 to-sky-400 bg-clip-text text-transparent">
+                Senior Frontend &amp; Mobile Engineer
+              </span>
             </motion.p>
 
             <motion.p
-              variants={itemVariants}
-              className="mb-10 font-medium text-slate-700 dark:text-slate-300 text-sm"
+              {...fadeUp(0.2)}
+              className="mt-6 max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg"
             >
-              {siteCopy.heroSince}
+              I build production React Native apps, Next.js platforms, and the
+              dashboards behind them, with a focus on clean architecture,
+              performance, and interfaces that hold up after launch.
             </motion.p>
 
-            <motion.div
-              variants={itemVariants}
-              className="flex sm:flex-row flex-col gap-4 lg:justify-center"
+            <motion.ul
+              {...fadeUp(0.26)}
+              className="mt-7 flex flex-wrap gap-2"
+              aria-label="Core expertise"
             >
-              <motion.a
+              {expertise.map((item) => (
+                <li
+                  key={item}
+                  className="rounded-lg border border-white/10 bg-white/[0.04] px-3 py-1.5 text-sm font-medium text-slate-200"
+                >
+                  {item}
+                </li>
+              ))}
+            </motion.ul>
+
+            <motion.div
+              {...fadeUp(0.32)}
+              className="mt-10 flex flex-col gap-3 sm:flex-row sm:items-center"
+            >
+              <a
                 href="#selected-work"
-                whileHover={prefersReducedMotion ? undefined : { scale: 1.02 }}
-                whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
-                className="inline-flex justify-center items-center gap-2 btn-brand px-8 py-4 rounded-xl font-semibold text-lg"
+                className="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-primary-500 to-primary-600 px-7 py-3.5 font-semibold text-white shadow-brand transition-all duration-200 hover:from-primary-400 hover:to-primary-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-300"
               >
-                View Selected Work
-                <ArrowRight size={20} aria-hidden />
-              </motion.a>
-              <motion.a
+                View My Work
+                <ArrowRight
+                  size={18}
+                  aria-hidden
+                  className="transition-transform duration-200 group-hover:translate-x-0.5"
+                />
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/15 px-7 py-3.5 font-semibold text-slate-100 transition-colors duration-200 hover:border-white/30 hover:bg-white/[0.05] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-300"
+              >
+                Contact Me
+              </a>
+              <a
                 href={brand.cvPath}
                 target="_blank"
                 rel="noopener noreferrer"
-                whileHover={prefersReducedMotion ? undefined : { scale: 1.02 }}
-                whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
-                className="inline-flex justify-center items-center gap-2 btn-brand-outline px-8 py-4 rounded-xl text-lg"
+                className="inline-flex items-center gap-1.5 px-2 py-3.5 text-sm font-medium text-slate-400 transition-colors hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-primary-300 rounded"
               >
-                <Download size={20} aria-hidden />
                 Download CV
-              </motion.a>
-              <motion.a
-                href="#contact"
-                whileHover={prefersReducedMotion ? undefined : { scale: 1.02 }}
-                whileTap={prefersReducedMotion ? undefined : { scale: 0.98 }}
-                className="inline-flex justify-center items-center gap-2 hover:bg-slate-100 dark:hover:bg-slate-800/80 px-8 py-4 border border-slate-200 dark:border-slate-700 rounded-xl font-semibold text-slate-700 dark:text-slate-200 text-lg transition-colors"
-              >
-                Start a Project
-              </motion.a>
+                <ArrowUpRight size={14} aria-hidden />
+              </a>
             </motion.div>
+
+            <motion.dl
+              {...fadeUp(0.4)}
+              className="mt-14 grid max-w-xl grid-cols-1 gap-6 border-t border-white/10 pt-8 sm:grid-cols-3"
+            >
+              {stats.map((stat) => (
+                <div key={stat.label}>
+                  <dt className="text-xs uppercase tracking-[0.16em] text-slate-500">
+                    {stat.label}
+                  </dt>
+                  <dd className="mt-1.5 font-display font-semibold text-white">
+                    {stat.value}
+                  </dd>
+                </div>
+              ))}
+            </motion.dl>
           </div>
-        </motion.div>
+
+          <motion.div
+            {...fadeUp(0.2)}
+            className="relative mx-auto w-full max-w-md lg:max-w-none"
+          >
+            <div
+              aria-hidden
+              className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-primary-500/25 via-transparent to-blue-600/25 blur-2xl"
+            />
+            <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-dark-900/70 p-3 shadow-2xl shadow-black/50 backdrop-blur">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+                <Image
+                  src={brand.profileImage}
+                  alt={brand.profileImageAlt}
+                  fill
+                  priority
+                  sizes="(min-width: 1024px) 420px, (min-width: 640px) 448px, 90vw"
+                  className="object-cover object-[center_20%]"
+                />
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark-950 via-dark-950/70 to-transparent p-5 pt-16">
+                  <p className="font-display font-semibold text-white">
+                    Current focus
+                  </p>
+                  <p className="mt-1 text-sm text-slate-300">
+                    Senior Frontend Developer at Medica Scope, building CarLink
+                    mobile and dashboard surfaces.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
     </section>
   )

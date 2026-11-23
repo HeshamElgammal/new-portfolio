@@ -1,88 +1,54 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import {
-  Cloud,
-  Code2,
-  Database,
-  GitBranch,
-  Globe,
-  Server,
-  Smartphone,
-  Wrench,
-} from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
 import SectionHeader from '@/components/ui/SectionHeader'
 import { containerVariants, itemVariants } from '@/lib/animations'
 
-const skillCategories = [
+const categories = [
   {
-    title: 'Mobile Development',
-    icon: Smartphone,
-    gradient: 'from-blue-500 to-cyan-500',
+    title: 'Frontend',
+    skills: [
+      'React.js',
+      'Next.js',
+      'TypeScript',
+      'JavaScript',
+      'HTML',
+      'CSS',
+      'Tailwind CSS',
+    ],
+  },
+  {
+    title: 'Mobile',
     skills: [
       'React Native',
-      'JavaScript',
+      'Expo',
       'Firebase',
-      'Redux',
       'Native Modules',
-      'Mobile APIs',
+      'Mobile Performance Optimization',
     ],
   },
   {
-    title: 'Web Development',
-    icon: Globe,
-    gradient: 'from-violet-500 to-purple-500',
+    title: 'State Management & Data',
+    skills: ['Redux Toolkit', 'TanStack Query', 'Zustand'],
+  },
+  {
+    title: 'Tools & Engineering',
     skills: [
-      'Next.js',
-      'React',
-      'TypeScript',
-      'Tailwind CSS',
-      'HTML/CSS',
+      'Git',
+      'GitHub',
+      'GitLab',
+      'CI/CD',
       'REST APIs',
+      'App Store / Google Play Deployment',
     ],
-  },
-  {
-    title: 'Backend & Database',
-    icon: Database,
-    gradient: 'from-emerald-500 to-teal-500',
-    skills: [
-      'Node.js',
-      'Express.js',
-      'PostgreSQL',
-      'MongoDB',
-      'Python',
-      'API Development',
-    ],
-  },
-  {
-    title: 'Development Tools',
-    icon: Wrench,
-    gradient: 'from-orange-500 to-amber-500',
-    skills: ['Git', 'VS Code', 'Hostinger VPS', 'AWS', 'Testing'],
   },
 ]
 
-const technologies = [
-  { name: 'React Native', icon: Smartphone },
-  { name: 'React', icon: Code2 },
-  { name: 'Next.js', icon: Globe },
-  { name: 'TypeScript', icon: Code2 },
-  { name: 'Node.js', icon: Server },
-  { name: 'MongoDB', icon: Database },
-  { name: 'PostgreSQL', icon: Database },
-  { name: 'Firebase', icon: Cloud },
-  { name: 'Git', icon: GitBranch },
-  { name: 'Hostinger VPS', icon: Server },
-  { name: 'Express.js', icon: Server },
-  { name: 'AWS', icon: Cloud },
-]
+const learning = ['Dart', 'Flutter']
 
 const Skills = () => {
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  })
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
     <section id="skills" className="section-shell bg-surface scroll-mt-28">
@@ -95,53 +61,27 @@ const Skills = () => {
           className="mx-auto max-w-6xl"
         >
           <SectionHeader
-            eyebrow="Expertise"
-            beforeHighlight="Skills & "
-            highlight="Technologies"
-            subtitle="Technologies and tools I use to design, build, and ship production-ready products."
+            eyebrow="Skills"
+            beforeHighlight="Technologies I "
+            highlight="Work With"
+            subtitle="The tools I use day to day to design, build, and ship production web and mobile products."
           />
 
-          <motion.div variants={itemVariants} className="mb-14">
-            <p className="mb-5 font-medium text-gray-500 dark:text-gray-400 text-sm text-center uppercase tracking-[0.2em]">
-              Core Stack
-            </p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {technologies.map((tech) => (
-                <motion.div
-                  key={tech.name}
-                  variants={itemVariants}
-                  className="inline-flex items-center gap-2 bg-white dark:bg-dark-700/80 shadow-sm px-4 py-2.5 border border-gray-200/80 dark:border-dark-600/80 rounded-full text-gray-700 dark:text-gray-200"
-                >
-                  <tech.icon size={16} className="text-primary-500" />
-                  <span className="font-medium text-sm">{tech.name}</span>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-
-          <div className="gap-6 grid md:grid-cols-2">
-            {skillCategories.map((category) => (
+          <div className="grid gap-5 md:grid-cols-2">
+            {categories.map((category) => (
               <motion.div
                 key={category.title}
                 variants={itemVariants}
-                className="group modern-card-soft overflow-hidden"
+                className="group rounded-2xl border border-slate-200 bg-white p-6 transition-colors duration-300 hover:border-primary-500/40 dark:border-white/[0.08] dark:bg-dark-900/60 sm:p-7"
               >
-                <div
-                  className={`flex items-center gap-3 bg-gradient-to-r ${category.gradient} px-6 py-4`}
-                >
-                  <div className="flex justify-center items-center bg-white/25 border border-white/25 rounded-xl w-10 h-10 text-white">
-                    <category.icon size={20} />
-                  </div>
-                  <h3 className="font-bold text-white text-lg">
-                    {category.title}
-                  </h3>
-                </div>
-
-                <ul className="flex flex-wrap gap-2 p-6">
+                <h3 className="font-display text-lg font-bold text-slate-900 dark:text-white">
+                  {category.title}
+                </h3>
+                <ul className="mt-5 flex flex-wrap gap-2">
                   {category.skills.map((skill) => (
                     <li
                       key={skill}
-                      className="bg-gray-100 dark:bg-dark-700 px-3 py-1.5 border border-gray-200 dark:border-dark-600 rounded-full font-medium text-gray-800 dark:text-gray-200 text-sm"
+                      className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1.5 text-sm font-medium text-slate-700 dark:border-white/10 dark:bg-white/[0.04] dark:text-slate-200"
                     >
                       {skill}
                     </li>
@@ -149,23 +89,41 @@ const Skills = () => {
                 </ul>
               </motion.div>
             ))}
-          </div>
 
-          <motion.div variants={itemVariants} className="mt-14">
-            <div className="relative modern-card-soft bg-gradient-to-br from-primary-600 via-primary-600 to-violet-600 p-8 md:p-10 overflow-hidden text-white text-center">
-              <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_top_right,rgba(255,255,255,0.4),transparent_50%)]" />
-              <div className="relative">
-                <h3 className="mb-3 font-bold text-2xl">
-                  Always Learning & Growing
-                </h3>
-                <p className="opacity-90 mx-auto max-w-2xl text-lg leading-relaxed">
-                  Continuously sharpening my craft across mobile, web, and
-                  full-stack — from React Native apps to Next.js platforms and
-                  VPS-backed production deployments.
-                </p>
+            <motion.div
+              variants={itemVariants}
+              className="rounded-2xl border border-dashed border-primary-500/40 bg-primary-500/[0.04] p-6 sm:p-7 md:col-span-2"
+            >
+              <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+                <div>
+                  <h3 className="font-display text-lg font-bold text-slate-900 dark:text-white">
+                    Currently learning
+                  </h3>
+                  <p className="mt-1 max-w-xl text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                    Exploring these for new cross-platform work. I have not used
+                    them in production yet.
+                  </p>
+                </div>
+                <ul className="flex flex-wrap gap-2">
+                  {learning.map((item) => (
+                    <li
+                      key={item}
+                      className="inline-flex items-center gap-2 rounded-lg border border-primary-500/30 bg-white px-3 py-1.5 text-sm font-medium text-primary-700 dark:bg-dark-950 dark:text-primary-300"
+                    >
+                      <span
+                        className="h-1.5 w-1.5 rounded-full bg-primary-400"
+                        aria-hidden
+                      />
+                      {item}
+                      <span className="text-xs font-normal text-slate-500">
+                        · learning
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </motion.div>
       </div>
     </section>

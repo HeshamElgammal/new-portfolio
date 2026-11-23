@@ -1,45 +1,30 @@
-"use client";
+'use client'
 
-import { motion } from "framer-motion";
-import { Code, Users, Zap } from "lucide-react";
-import { useInView } from "react-intersection-observer";
-import SectionHeader from "@/components/ui/SectionHeader";
-import { containerVariants, itemVariants } from "@/lib/animations";
-import { brand } from "@/lib/brand";
-import { siteCopy } from "@/lib/site-copy";
+import Image from 'next/image'
+import { motion } from 'framer-motion'
+import { useInView } from 'react-intersection-observer'
+import SectionHeader from '@/components/ui/SectionHeader'
+import { containerVariants, itemVariants } from '@/lib/animations'
+import { brand } from '@/lib/brand'
+import { siteCopy } from '@/lib/site-copy'
+
+const highlights = [
+  {
+    title: 'Mobile apps',
+    text: 'Cross-platform React Native apps taken from feature work through App Store and Google Play releases.',
+  },
+  {
+    title: 'Web platforms',
+    text: 'Next.js frontends, admin and center dashboards, and maintainable UI architecture shared across teams.',
+  },
+  {
+    title: 'Team delivery',
+    text: 'Frontend leadership, code review, and clear communication with designers, backend engineers, and clients.',
+  },
+]
 
 const About = () => {
-  const skills = [
-    {
-      icon: Code,
-      title: "Mobile Development",
-      description: "React Native, JavaScript, Firebase, Redux",
-      color: "text-blue-500",
-    },
-    {
-      icon: Zap,
-      title: "Web Development",
-      description: "Next.js, TypeScript, Tailwind CSS, React",
-      color: "text-purple-500",
-    },
-    {
-      icon: Users,
-      title: "Backend & Database",
-      description: "Node.js, PostgreSQL, MongoDB, Express.js",
-      color: "text-green-500",
-    },
-    {
-      icon: Code,
-      title: "Development Tools",
-      description: "Git, VS Code, Hostinger VPS, API Development",
-      color: "text-orange-500",
-    },
-  ];
-
-  const [ref, inView] = useInView({
-    triggerOnce: true,
-    threshold: 0.1,
-  });
+  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
     <section id="about" className="section-shell bg-surface scroll-mt-28">
@@ -48,87 +33,66 @@ const About = () => {
           ref={ref}
           variants={containerVariants}
           initial="hidden"
-          animate={inView ? "visible" : "hidden"}
-          className="mx-auto max-w-6xl min-h-[28rem]"
+          animate={inView ? 'visible' : 'hidden'}
+          className="mx-auto max-w-6xl"
         >
           <SectionHeader
-            eyebrow="The Studio"
-            beforeHighlight=""
-            highlight={brand.name}
+            eyebrow="About"
+            beforeHighlight="A bit about "
+            highlight="Me"
             subtitle={siteCopy.aboutLead}
           />
 
-          <div className="items-center gap-10 lg:gap-14 grid lg:grid-cols-[320px_minmax(0,1fr)]">
+          <div className="grid items-start gap-12 lg:grid-cols-[360px_minmax(0,1fr)] lg:gap-16">
             <motion.figure
               variants={itemVariants}
-              className="justify-self-center lg:justify-self-start w-full max-w-[320px]"
+              className="mx-auto w-full max-w-xs lg:mx-0 lg:max-w-none"
             >
-              <div className="relative overflow-hidden rounded-2xl border border-slate-200/80 dark:border-slate-700/80 shadow-lg aspect-square bg-slate-900">
-                <img
+              <div className="relative aspect-square overflow-hidden rounded-2xl border border-slate-200 shadow-xl dark:border-white/10">
+                <Image
                   src={brand.profileImage}
                   alt={brand.profileImageAlt}
-                  title={`${brand.name} — ${brand.jobTitle}`}
-                  width={1200}
-                  height={1200}
-                  decoding="async"
-                  className="absolute inset-0 w-full h-full object-cover object-[center_18%]"
+                  fill
+                  sizes="(min-width: 1024px) 360px, 320px"
+                  className="object-cover object-[center_18%]"
                 />
               </div>
-              <figcaption className="mt-3 font-medium text-slate-600 dark:text-slate-400 text-sm text-center lg:text-left">
-                {brand.name} — {brand.jobTitle}
+              <figcaption className="mt-3 text-center text-sm font-medium text-slate-600 dark:text-slate-400 lg:text-left">
+                {brand.name} · {brand.jobTitle}
               </figcaption>
             </motion.figure>
 
-            <div>
-              <motion.div variants={itemVariants} className="mb-12">
-                <h3 className="mb-4 font-display font-bold text-slate-900 dark:text-white text-2xl">
-                  About {brand.name}
-                </h3>
-                <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+            <div className="space-y-10">
+              <motion.div variants={itemVariants}>
+                <p className="text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
                   {siteCopy.aboutSupport}
                 </p>
-                <p className="mt-4 font-medium text-slate-700 dark:text-slate-300 text-sm">
+                <p className="mt-4 text-sm font-medium text-slate-500 dark:text-slate-400">
                   {siteCopy.heroSince}
                 </p>
               </motion.div>
 
-              <motion.div variants={itemVariants} className="space-y-8">
-                <h3 className="font-display font-bold text-slate-900 dark:text-white text-2xl">
-                  What I deliver
-                </h3>
-
-                <div className="gap-6 grid md:grid-cols-2">
-                  {skills.map((skill) => (
-                    <motion.div
-                      key={skill.title}
-                      variants={itemVariants}
-                      className="modern-card-soft p-6"
-                    >
-                      <div className="flex items-start space-x-4">
-                        <div
-                          className={`p-3 rounded-lg bg-gray-100 dark:bg-dark-600 ${skill.color}`}
-                        >
-                          <skill.icon size={24} />
-                        </div>
-                        <div className="flex-1">
-                          <h4 className="mb-2 font-semibold text-gray-900 dark:text-white text-xl">
-                            {skill.title}
-                          </h4>
-                          <p className="text-gray-600 dark:text-gray-400">
-                            {skill.description}
-                          </p>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+              <motion.ul variants={itemVariants} className="grid gap-4 sm:grid-cols-3">
+                {highlights.map((item) => (
+                  <li
+                    key={item.title}
+                    className="rounded-2xl border border-slate-200 bg-slate-50 p-5 dark:border-white/[0.08] dark:bg-dark-900/60"
+                  >
+                    <h3 className="font-display font-bold text-slate-900 dark:text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-400">
+                      {item.text}
+                    </p>
+                  </li>
+                ))}
+              </motion.ul>
             </div>
           </div>
         </motion.div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default About
