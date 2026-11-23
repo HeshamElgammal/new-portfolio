@@ -17,11 +17,8 @@ export const brand = {
   /** Canonical production origin (apex redirects to www). */
   siteUrl: 'https://www.heshamelgammal.site',
   profileImage: '/hesham-elgammal-senior-frontend-developer.jpg',
-  heroImage: '/hesham-elgammal-hero.webp',
   ogImage: '/hesham-elgammal-og.jpg',
   jobTitle: 'Senior Frontend & Mobile Engineer',
-  heroImageAlt:
-    'Hesham Elgammal presenting React, Next.js, and TypeScript holograms — Senior Frontend & Mobile Engineer',
   profileImageAlt:
     'Hesham Elgammal, Senior Frontend & Mobile Engineer specializing in React Native and Next.js',
 } as const
