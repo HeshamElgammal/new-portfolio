@@ -3,6 +3,15 @@ export type ExperienceLink = {
   href: string
 }
 
+export type ProjectMedia = {
+  /** Desktop capture of the live website. */
+  web?: string
+  /** App Store / Google Play screenshots shown inside a phone frame. */
+  phones?: string[]
+  /** Where the screenshots came from, for transparency. */
+  source: string
+}
+
 export type Experience = {
   title: string
   company: string
@@ -16,6 +25,8 @@ export type Experience = {
   accent: string
   /** Short label shown on the browser frame of the visual, e.g. a product domain. */
   surface: string
+  /** Genuine screenshots from the live site and store listings, if available. */
+  media?: ProjectMedia
   technologies: string[]
   links?: ExperienceLink[]
   live?: string
@@ -60,6 +71,15 @@ export const experiences: Experience[] = [
       'Digital Car ships cross-platform experiences for automotive buyers and sellers in the Gulf.',
     accent: '#3b82f6',
     surface: 'digitalcar.sa',
+    media: {
+      web: '/projects/digitalcar/web.jpg',
+      phones: [
+        '/projects/digitalcar/app-1.jpg',
+        '/projects/digitalcar/app-2.jpg',
+        '/projects/digitalcar/app-3.jpg',
+      ],
+      source: 'Live website and App Store screenshots',
+    },
     technologies: [
       'React Native',
       'TanStack Query',
@@ -93,6 +113,15 @@ export const experiences: Experience[] = [
       'Waseet connects buyers and sellers through mobile and web classifieds experiences.',
     accent: '#f59e0b',
     surface: 'eg.waseet.net',
+    media: {
+      web: '/projects/waseet/web.jpg',
+      phones: [
+        '/projects/waseet/listing-1.jpg',
+        '/projects/waseet/listing-2.jpg',
+        '/projects/waseet/listing-3.jpg',
+      ],
+      source: 'Live website and App Store listing screenshots',
+    },
     technologies: [
       'React Native',
       'Next.js',
@@ -171,6 +200,14 @@ export const experiences: Experience[] = [
       'Macqueen serves travelers with bundled mobility and lodging services.',
     accent: '#0ea5e9',
     surface: 'macqueen',
+    media: {
+      phones: [
+        '/projects/macqueen/listing-1.jpg',
+        '/projects/macqueen/listing-2.jpg',
+        '/projects/macqueen/listing-3.jpg',
+      ],
+      source: 'App Store listing screenshots',
+    },
     technologies: ['React Native', 'State Management', 'Modular Architecture'],
     links: [
       {

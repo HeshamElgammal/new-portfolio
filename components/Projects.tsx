@@ -32,9 +32,11 @@ const ProjectCard = ({
       className="group relative flex flex-col h-full overflow-hidden rounded-2xl border border-white/[0.08] bg-dark-900/60 backdrop-blur-sm transition-[border-color,box-shadow,transform] duration-300 hover:-translate-y-1 hover:border-white/20 hover:shadow-2xl hover:shadow-black/40"
     >
       <ProjectVisual
+        title={experience.title}
         company={experience.company}
         surface={experience.surface}
         accent={experience.accent}
+        media={experience.media}
         compact={!featured}
       />
 
@@ -94,6 +96,17 @@ const ProjectCard = ({
             </li>
           )}
         </ul>
+
+        {experience.media && (
+          <p className="mt-5 flex items-center gap-2 text-xs text-slate-500">
+            <span
+              className="h-1.5 w-1.5 shrink-0 rounded-full"
+              style={{ backgroundColor: experience.accent }}
+              aria-hidden
+            />
+            {experience.media.source}
+          </p>
+        )}
 
         {links.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-auto pt-6">
