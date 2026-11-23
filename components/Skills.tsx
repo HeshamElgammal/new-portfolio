@@ -51,7 +51,7 @@ const Skills = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
-    <section id="skills" className="section-shell bg-surface scroll-mt-28">
+    <section id="skills" className="section-shell scroll-mt-28 bg-dark-900/40">
       <div className="section-container">
         <motion.div
           ref={ref}

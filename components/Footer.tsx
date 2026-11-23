@@ -1,87 +1,85 @@
-'use client'
-
 import { Github, Linkedin, Mail } from 'lucide-react'
 import WhatsAppIcon from '@/components/icons/WhatsAppIcon'
 import BrandLogo from '@/components/ui/BrandLogo'
 import { brand } from '@/lib/brand'
 
+const quickLinks = [
+  { name: 'Work', href: '#selected-work' },
+  { name: 'Services', href: '#services' },
+  { name: 'About', href: '#about' },
+  { name: 'Skills', href: '#skills' },
+  { name: 'Contact', href: '#contact' },
+] as const
+
+const socialLinks = [
+  { icon: Github, name: 'GitHub', url: brand.github },
+  { icon: Linkedin, name: 'LinkedIn', url: brand.linkedin },
+  { icon: Mail, name: 'Email', url: `mailto:${brand.email}` },
+  { icon: WhatsAppIcon, name: 'WhatsApp', url: brand.whatsapp },
+]
+
 const Footer = () => {
   const currentYear = new Date().getFullYear()
 
-  const socialLinks = [
-    { icon: Github, name: 'GitHub', url: brand.github },
-    { icon: Linkedin, name: 'LinkedIn', url: brand.linkedin },
-    { icon: Mail, name: 'Email', url: `mailto:${brand.email}` },
-    { icon: WhatsAppIcon, name: 'WhatsApp', url: brand.whatsapp },
-  ]
-
-  const quickLinks = [
-    { name: 'Services', href: '#services' },
-    { name: 'Work', href: '#selected-work' },
-    { name: 'About', href: '#about' },
-    { name: 'Contact', href: '#contact' },
-  ] as const
-
   return (
-    <footer className="bg-dark-950 text-slate-300 border-slate-800 border-t">
-      <div className="section-container py-14">
-        <div className="gap-10 grid md:grid-cols-2 lg:grid-cols-4">
-          <div className="lg:col-span-2">
+    <footer className="border-t border-white/[0.08] bg-dark-950">
+      <div className="section-container py-16">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
+          <div className="lg:col-span-5">
             <BrandLogo />
-            <p className="mt-5 mb-6 max-w-md text-slate-400 leading-relaxed">
-              {brand.description} — {brand.studioName}.
+            <p className="mt-6 max-w-sm leading-relaxed text-slate-400">
+              {brand.description}
             </p>
-            <div className="flex gap-3">
+            <ul className="mt-6 flex gap-2.5">
               {socialLinks.map((social) => {
                 const Icon = social.icon
                 return (
-                  <a
-                    key={social.name}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-dark-900 hover:bg-primary-600/20 p-3 border border-slate-800 hover:border-primary-500/30 rounded-xl text-slate-400 hover:text-primary-300 hover:scale-105 transition-[colors,transform] duration-200"
-                    aria-label={social.name}
-                  >
-                    <Icon size={20} />
-                  </a>
+                  <li key={social.name}>
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={social.name}
+                      className="surface-card flex h-11 w-11 items-center justify-center text-slate-300 transition-colors hover:border-primary-400/40 hover:text-white focus-ring"
+                    >
+                      <Icon size={18} aria-hidden />
+                    </a>
+                  </li>
                 )
               })}
-            </div>
+            </ul>
           </div>
 
-          <div>
-            <h4 className="mb-4 font-semibold text-white">Explore</h4>
-            <ul className="space-y-2">
+          <nav aria-label="Footer" className="lg:col-span-3 lg:col-start-7">
+            <h2 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+              Explore
+            </h2>
+            <ul className="space-y-3">
               {quickLinks.map((link) => (
                 <li key={link.name}>
                   <a
                     href={link.href}
-                    className="text-slate-400 hover:text-primary-300 transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-400 rounded"
+                    className="text-slate-300 transition-colors hover:text-white focus-ring rounded"
                   >
                     {link.name}
                   </a>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          <div>
-            <h4 className="mb-4 font-semibold text-white">Work with me</h4>
-            <address className="space-y-2 not-italic text-slate-400 text-sm">
+          <div className="lg:col-span-3">
+            <h2 className="mb-5 text-xs font-semibold uppercase tracking-[0.2em] text-slate-500">
+              Get in touch
+            </h2>
+            <address className="space-y-3 not-italic text-slate-300">
               <p>
-                <a
-                  href={`mailto:${brand.email}`}
-                  className="hover:text-primary-300 transition-colors"
-                >
+                <a href={`mailto:${brand.email}`} className="break-all transition-colors hover:text-white focus-ring rounded">
                   {brand.email}
                 </a>
               </p>
               <p>
-                <a
-                  href={brand.phoneTel}
-                  className="hover:text-primary-300 transition-colors"
-                >
+                <a href={brand.phoneTel} className="transition-colors hover:text-white focus-ring rounded">
                   {brand.phone}
                 </a>
               </p>
@@ -90,21 +88,21 @@ const Footer = () => {
                   href={brand.whatsapp}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-emerald-400 transition-colors"
+                  className="transition-colors hover:text-emerald-300 focus-ring rounded"
                 >
-                  WhatsApp: {brand.phone}
+                  WhatsApp
                 </a>
               </p>
-              <p>{brand.location}</p>
+              <p className="text-slate-500">{brand.location}</p>
             </address>
           </div>
         </div>
 
-        <div className="flex md:flex-row flex-col justify-between items-center gap-3 mt-12 pt-8 border-slate-800 border-t text-slate-500 text-sm">
+        <div className="mt-14 flex flex-col items-start justify-between gap-3 border-t border-white/[0.08] pt-8 text-sm text-slate-500 md:flex-row md:items-center">
           <p>
             © {currentYear} {brand.name} · {brand.studioName}
           </p>
-          <p className="text-slate-400">{brand.tagline}</p>
+          <p>{brand.tagline}</p>
         </div>
       </div>
     </footer>

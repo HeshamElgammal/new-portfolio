@@ -1,14 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import {
-  ArrowRight,
-  Cloud,
-  Layers,
-  Rocket,
-  Smartphone,
-  Workflow,
-} from 'lucide-react'
+import { ArrowRight, Cloud, Layers, Smartphone, Workflow } from 'lucide-react'
 import { useInView } from 'react-intersection-observer'
 import SectionHeader from '@/components/ui/SectionHeader'
 import { containerVariants, itemVariants } from '@/lib/animations'
@@ -32,7 +25,7 @@ const services = [
     icon: Workflow,
     title: 'Full-Stack Products',
     description:
-      'End-to-end delivery — APIs, databases, admin panels, and integrations owned from design through deployment.',
+      'End-to-end delivery: APIs, databases, admin panels, and integrations owned from design through deployment.',
     tags: ['Node.js', 'MongoDB', 'REST APIs'],
   },
   {
@@ -54,12 +47,8 @@ const process = [
 const Services = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.08 })
 
-  const scrollToContact = () => {
-    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
-  }
-
   return (
-    <section id="services" className="section-shell bg-surface-muted scroll-mt-28">
+    <section id="services" className="section-shell scroll-mt-28 bg-dark-900/40">
       <div className="section-container">
         <motion.div
           ref={ref}
@@ -69,88 +58,74 @@ const Services = () => {
           className="mx-auto max-w-6xl"
         >
           <SectionHeader
-            eyebrow="What I Offer"
+            eyebrow="Services"
             beforeHighlight="Services for "
             highlight="Your Next Project"
-            subtitle="Freelance services for your next project — mobile apps, web platforms, and full-stack products, delivered by Hesham Elgammal."
+            subtitle="Freelance work across mobile apps, web platforms, and full-stack products, delivered by Hesham Elgammal."
           />
 
-          <div className="gap-6 grid md:grid-cols-2 mb-16">
+          <div className="grid gap-5 md:grid-cols-2">
             {services.map((service) => (
-              <motion.div
+              <motion.article
                 key={service.title}
                 variants={itemVariants}
-                whileHover={{ y: -4 }}
-                className="group modern-card p-6 sm:p-8"
+                className="surface-card-interactive group p-7 sm:p-8"
               >
-                <div className="flex items-start gap-4 mb-4">
-                  <div className="flex justify-center items-center bg-primary-500/10 border border-primary-500/20 rounded-xl w-12 h-12 text-primary-600 dark:text-primary-400">
-                    <service.icon size={22} />
-                  </div>
-                  <div>
-                    <h3 className="font-bold text-slate-900 dark:text-white text-xl">
-                      {service.title}
-                    </h3>
-                  </div>
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-xl border border-primary-400/25 bg-primary-400/10 text-primary-300 transition-colors duration-300 group-hover:bg-primary-400/15">
+                  <service.icon size={22} aria-hidden />
                 </div>
-                <p className="mb-5 text-slate-600 dark:text-slate-400 leading-relaxed">
+                <h3 className="font-display text-xl font-bold text-white">
+                  {service.title}
+                </h3>
+                <p className="mt-3 mb-6 leading-relaxed text-slate-400">
                   {service.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
+                <ul className="flex flex-wrap gap-2">
                   {service.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="bg-slate-100 dark:bg-dark-700 px-3 py-1 border border-slate-200/80 dark:border-dark-600 rounded-full text-slate-600 dark:text-slate-300 text-xs"
-                    >
+                    <li key={tag} className="chip">
                       {tag}
-                    </span>
+                    </li>
                   ))}
-                </div>
-              </motion.div>
+                </ul>
+              </motion.article>
             ))}
           </div>
 
-          <motion.div
-            variants={itemVariants}
-            className="modern-card-soft p-8 md:p-10 mb-12"
-          >
-            <div className="flex sm:flex-row flex-col sm:justify-between sm:items-center gap-4 mb-8">
+          <motion.div variants={itemVariants} className="surface-card mt-8 p-7 sm:p-10">
+            <div className="mb-10 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <p className="mb-1 font-medium text-primary-600 dark:text-primary-400 text-xs uppercase tracking-[0.2em]">
+                <p className="mb-2 text-xs font-semibold uppercase tracking-[0.2em] text-primary-400">
                   How I work
                 </p>
-                <h3 className="font-bold text-slate-900 dark:text-white text-2xl">
+                <h3 className="font-display text-2xl font-bold text-white">
                   A clear path from idea to launch
                 </h3>
               </div>
-              <Rocket className="hidden sm:block text-primary-500/40" size={40} />
             </div>
-            <div className="gap-6 grid sm:grid-cols-2 lg:grid-cols-4">
+            <ol className="relative grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              <span
+                aria-hidden
+                className="absolute left-0 right-0 top-[15px] hidden h-px bg-gradient-to-r from-primary-400/60 via-white/10 to-transparent lg:block"
+              />
               {process.map((item) => (
-                <div key={item.step} className="relative">
-                  <p className="mb-2 font-black text-primary-500/30 text-3xl">
+                <li key={item.step} className="relative">
+                  <span className="mb-4 flex h-8 w-8 items-center justify-center rounded-full border border-primary-400/40 bg-dark-900 font-mono text-xs font-semibold text-primary-300">
                     {item.step}
-                  </p>
-                  <h4 className="mb-1 font-semibold text-slate-900 dark:text-white">
-                    {item.title}
-                  </h4>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm">
+                  </span>
+                  <h4 className="mb-1.5 font-semibold text-white">{item.title}</h4>
+                  <p className="text-sm leading-relaxed text-slate-400">
                     {item.detail}
                   </p>
-                </div>
+                </li>
               ))}
-            </div>
+            </ol>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="text-center">
-            <button
-              type="button"
-              onClick={scrollToContact}
-              className="inline-flex items-center gap-2 btn-brand px-8 py-4 rounded-xl font-semibold text-base"
-            >
+          <motion.div variants={itemVariants} className="mt-14 text-center">
+            <a href="#contact" className="btn-primary">
               Discuss your project
-              <ArrowRight size={18} />
-            </button>
+              <ArrowRight size={18} aria-hidden />
+            </a>
           </motion.div>
         </motion.div>
       </div>

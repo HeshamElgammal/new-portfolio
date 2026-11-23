@@ -27,7 +27,7 @@ const About = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
 
   return (
-    <section id="about" className="section-shell bg-surface scroll-mt-28">
+    <section id="about" className="section-shell scroll-mt-28">
       <div className="section-container">
         <motion.div
           ref={ref}
