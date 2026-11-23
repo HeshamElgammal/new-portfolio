@@ -160,12 +160,12 @@ const Hero = () => {
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-dark-900/70 p-3 shadow-2xl shadow-black/50 backdrop-blur">
               <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
                 <Image
-                  src={brand.profileImage}
-                  alt={brand.profileImageAlt}
+                  src={brand.heroImage}
+                  alt={brand.heroImageAlt}
                   fill
                   priority
                   sizes="(min-width: 1024px) 420px, (min-width: 640px) 448px, 90vw"
-                  className="object-cover object-[center_20%]"
+                  className="object-cover object-center"
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark-950 via-dark-950/70 to-transparent p-5 pt-16">
                   <p className="font-display font-semibold text-white">
