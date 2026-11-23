@@ -1,17 +1,3 @@
-import {
-  Briefcase,
-  Car,
-  Globe,
-  GraduationCap,
-  Mountain,
-  Pill,
-  Plane,
-  ShoppingBag,
-  Smartphone,
-  Store,
-} from 'lucide-react'
-import type { LucideIcon } from 'lucide-react'
-
 export type ExperienceLink = {
   label: string
   href: string
@@ -26,13 +12,13 @@ export type Experience = {
   product: string
   contribution: string
   description: string
-  image?: string
-  icon: LucideIcon
-  gradient: string
+  /** Brand accent used for the project's placeholder visual (hex). */
+  accent: string
+  /** Short label shown on the browser frame of the visual, e.g. a product domain. */
+  surface: string
   technologies: string[]
-  github?: string
-  live?: string
   links?: ExperienceLink[]
+  live?: string
   featured?: boolean
 }
 
@@ -49,8 +35,8 @@ export const experiences: Experience[] = [
       'Implemented React Native flows for service requests and center booking, plus Center and Admin dashboards in Next.js within a shared monorepo with REST APIs and GitHub Actions CI/CD.',
     description:
       'CarLink connects drivers and service centers across mobile and dashboard surfaces for the Saudi market.',
-    icon: Car,
-    gradient: 'from-teal-600 via-cyan-600 to-blue-600',
+    accent: '#14b8a6',
+    surface: 'carlink · service centers',
     technologies: [
       'React Native',
       'Next.js',
@@ -72,9 +58,8 @@ export const experiences: Experience[] = [
       'Led frontend delivery across React Native surfaces and migrated data-fetching layers to TanStack Query for clearer caching, fewer redundant requests, and easier feature work.',
     description:
       'Digital Car ships cross-platform experiences for automotive buyers and sellers in the Gulf.',
-    image: 'https://dcar-prod.s3.amazonaws.com/imgUploads/1736261555964.webp',
-    icon: Briefcase,
-    gradient: 'from-blue-600 via-indigo-600 to-violet-600',
+    accent: '#3b82f6',
+    surface: 'digitalcar.sa',
     technologies: [
       'React Native',
       'TanStack Query',
@@ -82,10 +67,7 @@ export const experiences: Experience[] = [
       'RESTful APIs',
     ],
     links: [
-      {
-        label: 'Website',
-        href: 'https://www.digitalcar.sa/en',
-      },
+      { label: 'Website', href: 'https://www.digitalcar.sa/en' },
       {
         label: 'Google Play',
         href: 'https://play.google.com/store/apps/details?id=com.digitalcar_mobile&pcampaignid=web_share',
@@ -109,9 +91,8 @@ export const experiences: Experience[] = [
       'Built listing and profile flows, reusable UI components, and REST API integrations with design and backend partners for cross-platform releases.',
     description:
       'Waseet connects buyers and sellers through mobile and web classifieds experiences.',
-    image: 'https://waseet.net/assets/logo-ar.svg',
-    icon: ShoppingBag,
-    gradient: 'from-orange-500 via-amber-500 to-yellow-500',
+    accent: '#f59e0b',
+    surface: 'eg.waseet.net',
     technologies: [
       'React Native',
       'Next.js',
@@ -119,10 +100,7 @@ export const experiences: Experience[] = [
       'Performance Optimization',
     ],
     links: [
-      {
-        label: 'Website',
-        href: 'https://eg.waseet.net/en',
-      },
+      { label: 'Website', href: 'https://eg.waseet.net/en' },
       {
         label: 'Google Play',
         href: 'https://play.google.com/store/apps/details?id=com.awi.waseet&pcampaignid=web_share',
@@ -146,8 +124,8 @@ export const experiences: Experience[] = [
       'Delivered end-to-end from Next.js monorepo (marketing + admin) through Express APIs, database models, VPS deployment, and production DNS on Hostinger.',
     description:
       'TeeslaTech needed a single engineer to ship the full product stack from UI to infrastructure.',
-    icon: Globe,
-    gradient: 'from-violet-600 via-purple-600 to-fuchsia-600',
+    accent: '#8b5cf6',
+    surface: 'teeslatech.com',
     technologies: [
       'Next.js',
       'Monorepo',
@@ -167,13 +145,14 @@ export const experiences: Experience[] = [
     position: 'Frontend Developer',
     duration: 'Sep 2022 - Dec 2023',
     type: 'Full-time',
-    product: 'Multiple client web and mobile products across affiliate and education verticals.',
+    product:
+      'Multiple client web and mobile products across affiliate and education verticals.',
     contribution:
       'Shipped React.js, Next.js, and React Native features with third-party API integrations and code review participation.',
     description:
       'O-Projects delivered frontend work across Affiliate, Lokle, Glia, and Edactik.',
-    icon: Smartphone,
-    gradient: 'from-indigo-500 via-blue-600 to-cyan-600',
+    accent: '#6366f1',
+    surface: 'o-projects.org',
     technologies: ['React.js', 'Next.js', 'React Native', 'Third-party APIs'],
     live: 'https://o-projects.org/',
     featured: false,
@@ -190,8 +169,8 @@ export const experiences: Experience[] = [
       'Built cross-platform React Native features and improved maintainability through modular structure and state management.',
     description:
       'Macqueen serves travelers with bundled mobility and lodging services.',
-    icon: Plane,
-    gradient: 'from-sky-500 via-blue-500 to-indigo-600',
+    accent: '#0ea5e9',
+    surface: 'macqueen',
     technologies: ['React Native', 'State Management', 'Modular Architecture'],
     links: [
       {
@@ -211,12 +190,13 @@ export const experiences: Experience[] = [
     position: 'React Native Instructor',
     duration: 'Jul 2022 - Sep 2022',
     type: 'Part-time',
-    product: 'Instructor-led React Native curriculum for beginners and intermediate developers.',
+    product:
+      'Instructor-led React Native curriculum for beginners and intermediate developers.',
     contribution:
       'Ran hands-on sessions, debugging labs, code review, and structured coursework.',
     description: 'DotPy training program for mobile developers in Cairo.',
-    icon: GraduationCap,
-    gradient: 'from-amber-500 via-orange-500 to-red-500',
+    accent: '#f97316',
+    surface: 'dotpy · training',
     technologies: ['React Native', 'Teaching', 'Code Review', 'Curriculum Design'],
     featured: false,
   },
@@ -230,8 +210,8 @@ export const experiences: Experience[] = [
     contribution:
       'Integrated payment gateways and authentication and optimized Redux-based state for catalog and checkout flows.',
     description: 'Blue Brain retail apps on iOS and Android.',
-    icon: Store,
-    gradient: 'from-rose-500 via-pink-500 to-fuchsia-600',
+    accent: '#ec4899',
+    surface: 'bluebrain-co.com',
     technologies: ['React Native', 'Redux', 'Payment Gateways', 'E-Commerce'],
     live: 'https://www.bluebrain-co.com/en',
     featured: false,
@@ -242,12 +222,14 @@ export const experiences: Experience[] = [
     position: 'React Native Developer',
     duration: 'Freelance',
     type: 'Freelance',
-    product: 'Clinical decision support and pharmacy reference app for healthcare professionals.',
+    product:
+      'Clinical decision support and pharmacy reference app for healthcare professionals.',
     contribution:
       'Revamped search and navigation performance, upgraded React Native, and refactored UI/UX for maintainability.',
-    description: 'DrugGo supports clinicians with drug reference and search workflows.',
-    icon: Pill,
-    gradient: 'from-cyan-500 via-sky-500 to-blue-600',
+    description:
+      'DrugGo supports clinicians with drug reference and search workflows.',
+    accent: '#0284c7',
+    surface: 'druggo · pharmacy',
     technologies: [
       'React Native',
       'Performance Optimization',
@@ -267,8 +249,8 @@ export const experiences: Experience[] = [
     contribution:
       'Implemented trail discovery, interactive maps, and offline route access in React Native.',
     description: 'Hike-Time helps outdoor enthusiasts plan and track routes.',
-    icon: Mountain,
-    gradient: 'from-green-600 via-emerald-600 to-lime-600',
+    accent: '#22c55e',
+    surface: 'hike-time',
     technologies: [
       'React Native',
       'Interactive Maps',
