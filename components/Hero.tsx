@@ -158,20 +158,30 @@ const Hero = () => {
               className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-br from-primary-500/25 via-transparent to-blue-600/25 blur-2xl"
             />
             <div className="relative overflow-hidden rounded-3xl border border-white/10 bg-dark-900/70 p-3 shadow-2xl shadow-black/50 backdrop-blur">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl ring-1 ring-inset ring-white/10">
                 <Image
                   src={brand.heroImage}
                   alt={brand.heroImageAlt}
                   fill
                   priority
                   sizes="(min-width: 1024px) 420px, (min-width: 640px) 448px, 90vw"
-                  className="object-cover object-center"
+                  className="object-cover object-center transition-transform duration-700 ease-out motion-safe:hover:scale-[1.02]"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-dark-950 via-dark-950/70 to-transparent p-5 pt-16">
+                <div
+                  aria-hidden
+                  className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white/[0.06] via-transparent to-transparent"
+                />
+              </div>
+              <div className="flex items-start gap-3 px-2 pb-2 pt-4">
+                <span
+                  aria-hidden
+                  className="mt-1.5 h-2 w-2 flex-none rounded-full bg-primary-400 shadow-[0_0_12px_rgba(45,212,191,0.8)]"
+                />
+                <div className="min-w-0">
                   <p className="font-display font-semibold text-white">
                     Current focus
                   </p>
-                  <p className="mt-1 text-sm text-slate-300">
+                  <p className="mt-1 text-sm leading-relaxed text-slate-300">
                     Senior Frontend Developer at Medica Scope, building CarLink
                     mobile and dashboard surfaces.
                   </p>
