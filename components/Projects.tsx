@@ -130,7 +130,11 @@ const ProjectCard = ({
 }
 
 const Projects = () => {
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 })
+  const [ref, inView] = useInView({
+    triggerOnce: true,
+    threshold: 0.01,
+    rootMargin: '0px 0px 120px 0px',
+  })
 
   const featuredExperiences = sortFeaturedExperiences(
     experiences.filter((experience) => experience.featured),
