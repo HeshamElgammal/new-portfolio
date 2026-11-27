@@ -4,7 +4,7 @@ export const brand = {
   shortName: 'Hesham',
   tagline: 'Senior Frontend & Mobile Engineer · React Native & Next.js',
   description:
-    'Senior Frontend & Mobile Engineer building production React Native apps, Next.js web platforms, and dashboards for teams in Egypt and the Gulf.',
+    'Senior Frontend & Mobile Engineer building production React Native apps, Next.js web platforms, dashboards, and Arabic-first digital products for teams in Egypt and the Gulf.',
   email: 'heshamelgammal404@gmail.com',
   phone: '+20 109 290 1319',
   phoneTel: 'tel:+201092901319',

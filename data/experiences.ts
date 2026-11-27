@@ -169,6 +169,29 @@ export const experiences: Experience[] = [
     featured: true,
   },
   {
+    title: 'Khalasto – Bridal Checklist PWA',
+    company: 'Independent Project',
+    position: 'Product & Frontend Developer',
+    duration: '2026',
+    type: 'Independent Project',
+    product:
+      'Arabic-first progressive web app for organizing bridal shopping lists, budgets, and purchase progress.',
+    contribution:
+      'Built a shareable checklist experience with budget tracking, printable lists, guest access, product discovery, and WhatsApp sharing.',
+    description:
+      'Khalasto helps families manage bridal purchases, budgets, and progress in one place.',
+    accent: '#f472b6',
+    surface: 'khalasto.site',
+    technologies: [
+      'Progressive Web App',
+      'Arabic UX',
+      'Budget Tracking',
+      'WhatsApp Sharing',
+    ],
+    links: [{ label: 'Visit Khalasto', href: 'https://khalasto.site' }],
+    featured: true,
+  },
+  {
     title: 'O-Projects – Web & Mobile Products',
     company: 'O-Projects',
     position: 'Frontend Developer',
@@ -311,6 +334,7 @@ export const featuredExperienceOrder = [
   'Digital Car – Saudi Automotive Platform',
   'Waseet.net – Classifieds Platform',
   'TeeslaTech – Full-Stack Web Platform & Admin Dashboard',
+  'Khalasto – Bridal Checklist PWA',
 ] as const
 
 export const sortFeaturedExperiences = (items: Experience[]) =>

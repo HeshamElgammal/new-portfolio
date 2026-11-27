@@ -6,7 +6,7 @@ export const siteCopy = {
   heroSince: 'Building production apps since 2021.',
   studioLine: 'Hesham Studio — freelance & contract delivery.',
   aboutLead:
-    'I specialize in React Native and Next.js across automotive, classifieds, and full-stack product work — including CarLink at Medica Scope, frontend leadership at Digital Car, delivery at Waseet.net, and independent builds such as TeeslaTech.',
+    'I specialize in React Native and Next.js across automotive, classifieds, and full-stack product work — including CarLink at Medica Scope, frontend leadership at Digital Car, delivery at Waseet.net, and independent builds such as TeeslaTech and Khalasto.',
   aboutSupport:
     'Based in Egypt and working remotely with Gulf and international teams, I focus on clear communication, maintainable UI architecture, and shipping features that hold up in production.',
 } as const

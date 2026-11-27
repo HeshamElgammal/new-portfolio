@@ -30,6 +30,8 @@ export const metadata: Metadata = {
     'React Native developer Egypt',
     'Next.js developer Cairo',
     'freelance frontend developer',
+    'khalasto.site',
+    'Arabic progressive web app',
     'mobile app developer',
     profileSeo.education.institution,
     ...profileSeo.skills.slice(0, 8),
